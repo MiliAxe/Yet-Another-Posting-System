@@ -43,8 +43,8 @@ namespace Yet_Another_Posting_System
 
         private void SignupButton_Click(object sender, RoutedEventArgs e)
         {
-            CustomerMain customerMain = new CustomerMain();
-            customerMain.Show();
+            SignupMain signupWindow = new SignupMain();
+            signupWindow.Show();
         }
     }
 }

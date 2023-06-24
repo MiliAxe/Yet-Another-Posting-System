@@ -17,11 +17,16 @@ namespace Yet_Another_Posting_System
     /// <summary>
     /// Interaction logic for Signup.xaml
     /// </summary>
-    public partial class Signup : Window
+    public partial class SignupMain : Window
     {
-        public Signup()
+        public SignupMain()
         {
             InitializeComponent();
+        }
+
+        private void SignupButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
