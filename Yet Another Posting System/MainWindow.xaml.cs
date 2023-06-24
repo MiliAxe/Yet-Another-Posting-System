@@ -22,14 +22,14 @@ namespace Yet_Another_Posting_System
     {
         public MainWindow()
         {
+            SQLUtils usersDt = new SQLUtils("Users.db");
             InitializeComponent();
         }
 
         private void LoginButtonClick(object sender, RoutedEventArgs e)
         {
-            WorkerMain workerMain = new WorkerMain();
-            workerMain.Show();
         }
+        
 
         private void SignupButton_Click(object sender, RoutedEventArgs e)
         {
