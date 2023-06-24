@@ -20,14 +20,24 @@ namespace Yet_Another_Posting_System
     /// </summary>
     public partial class MainWindow : Window
     {
+        UsersDatabase users;
+
         public MainWindow()
         {
-            SQLUtils usersDt = new SQLUtils("Users.db");
+            users = new UsersDatabase("Users.db");
             InitializeComponent();
         }
 
         private void LoginButtonClick(object sender, RoutedEventArgs e)
         {
+            if (users.AuthenticateUser(usernameBox.Text, PasswordBox.Password))
+            {
+                PasswordBox.BorderBrush = new SolidColorBrush(Colors.Green);
+            }
+            else
+            {
+                PasswordBox.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
         }
         
 

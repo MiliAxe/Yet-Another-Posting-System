@@ -10,7 +10,7 @@
         <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
             <StackPanel Orientation="Vertical" Margin="0,0,0,10">
                 <TextBlock TextWrapping="Wrap" Text="Username"/>
-                <TextBox TextWrapping="Wrap" Width="120" Background="#FFF1F1F1"/>
+                <TextBox x:Name="usernameBox" TextWrapping="Wrap" Width="120" Background="#FFF1F1F1"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock TextWrapping="Wrap" Text="Password"/>

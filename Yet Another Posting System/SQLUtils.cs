@@ -41,11 +41,13 @@ namespace Yet_Another_Posting_System
                     {
                         if (reader["Username"].ToString() == username && reader["Password"].ToString() == password)
                         {
+                            dtConnection.Close();
                             return true;
                         }
                     }
                 }
             }
+            dtConnection.Close();
             return false;
         }
 
@@ -76,6 +78,16 @@ namespace Yet_Another_Posting_System
             if (UserExists(username) == true)
             {
                 throw new System.Exception("This user already exists");
+            }
+
+            this.dtConnection.Open();
+
+            string insertQuery = "INSERT INTO Users (Username, Passowrd) VALUES (@Username, @Password);";
+            using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, this.dtConnection))
+            {
+                insertCommand.Parameters.AddWithValue("@Username", username);
+                insertCommand.Parameters.AddWithValue("@Password", password);
+                insertCommand.ExecuteNonQuery();
             }
         }
     }
