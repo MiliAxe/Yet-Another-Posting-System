@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Yet_Another_Posting_System"
         mc:Ignorable="d"
-        Title="Signup" Height="200" Width="200">
+        Title="Signup Window" Height="200" Width="200">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
             <TextBlock TextWrapping="Wrap" Text="Employee Signup" Height="22" Width="96" FontStyle="Italic" Margin="0,0,0,-3" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>

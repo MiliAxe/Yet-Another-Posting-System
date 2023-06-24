@@ -20,7 +20,7 @@ namespace Yet_Another_Posting_System
     /// </summary>
     public partial class MainWindow : Window
     {
-        UsersDatabase users;
+        private UsersDatabase users;
 
         public MainWindow()
         {
@@ -43,7 +43,7 @@ namespace Yet_Another_Posting_System
 
         private void SignupButton_Click(object sender, RoutedEventArgs e)
         {
-            SignupMain signupWindow = new SignupMain();
+            SignupMain signupWindow = new SignupMain(users);
             signupWindow.Show();
         }
     }

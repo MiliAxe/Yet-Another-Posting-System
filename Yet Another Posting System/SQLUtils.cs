@@ -2,7 +2,7 @@
 
 namespace Yet_Another_Posting_System
 {
-    internal class SQLUtils
+    public class SQLUtils
     {
         public SQLiteConnection dtConnection;
 
@@ -13,7 +13,7 @@ namespace Yet_Another_Posting_System
         }
     }
 
-    internal class UsersDatabase : SQLUtils
+    public class UsersDatabase : SQLUtils
     {
         public UsersDatabase(string dbName) : base(dbName)
         {
@@ -65,11 +65,13 @@ namespace Yet_Another_Posting_System
                     {
                         if (reader["Username"].ToString() == username)
                         {
+                            this.dtConnection.Close();
                             return true;
                         }
                     }
                 }
             }
+            this.dtConnection.Close();
             return false;
         }
 
@@ -82,13 +84,15 @@ namespace Yet_Another_Posting_System
 
             this.dtConnection.Open();
 
-            string insertQuery = "INSERT INTO Users (Username, Passowrd) VALUES (@Username, @Password);";
+            string insertQuery = "INSERT INTO Users (Username, Password) VALUES (@Username, @Password);";
             using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, this.dtConnection))
             {
                 insertCommand.Parameters.AddWithValue("@Username", username);
                 insertCommand.Parameters.AddWithValue("@Password", password);
                 insertCommand.ExecuteNonQuery();
             }
+
+            dtConnection.Close();
         }
     }
 }

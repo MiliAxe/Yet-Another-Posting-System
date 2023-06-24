@@ -19,14 +19,17 @@ namespace Yet_Another_Posting_System
     /// </summary>
     public partial class SignupMain : Window
     {
-        public SignupMain()
+        UsersDatabase users;
+
+        public SignupMain(UsersDatabase users)
         {
+            this.users = users;
             InitializeComponent();
         }
 
         private void SignupButton_Click(object sender, RoutedEventArgs e)
         {
-
+            users.AddUser(usernameBox.Text, PasswordBox.Password);
         }
     }
 }
