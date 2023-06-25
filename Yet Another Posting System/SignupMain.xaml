@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Signup Window" Height="387" Width="200">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
+        <StackPanel x:Name="MainStackPanel" HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
             <TextBlock x:Name="MainTextbox" TextWrapping="Wrap" Text="Employee Signup" Height="22" Width="96" FontStyle="Italic" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <StackPanel Orientation="Vertical" Margin="0,0,0,10">
                 <TextBlock TextWrapping="Wrap" Text="Username"/>

@@ -85,7 +85,7 @@ namespace Yet_Another_Posting_System
 
             this.dtConnection.Open();
 
-            string insertQuery = "INSERT INTO Users (Username, Password, ID, Phone, Name) VALUES (@Username, @Password, @ID, @Phone, @Name);";
+            string insertQuery = "INSERT INTO Users (Username, Password, ID, Phone, Name, Type) VALUES (@Username, @Password, @ID, @Phone, @Name, @Type);";
             using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, this.dtConnection))
             {
                 insertCommand.Parameters.AddWithValue("@Username", username);
@@ -93,7 +93,7 @@ namespace Yet_Another_Posting_System
                 insertCommand.Parameters.AddWithValue("@ID", id);
                 insertCommand.Parameters.AddWithValue("@Phone", phone);
                 insertCommand.Parameters.AddWithValue("@Name", name);
-                insertCommand.Parameters.AddWithValue("@Name", type);
+                insertCommand.Parameters.AddWithValue("@Type", type);
                 insertCommand.ExecuteNonQuery();
             }
 
