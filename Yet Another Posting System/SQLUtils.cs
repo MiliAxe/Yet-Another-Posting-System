@@ -74,7 +74,31 @@ namespace Yet_Another_Posting_System
             }
             this.dtConnection.Close();
             return false;
-        }
+        } 
+
+        public bool TypeUserExists(string username, string type)
+        {
+
+            this.dtConnection.Open();
+
+            string selectQuery = "SELECT * FROM Users";
+            using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, dtConnection))
+            {
+                using (SQLiteDataReader reader = selectCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["Username"].ToString() == username && reader["Type"].ToString() == type)
+                        {
+                            this.dtConnection.Close();
+                            return true;
+                        }
+                    }
+                }
+            }
+            this.dtConnection.Close();
+            return false;
+        } 
 
         public void AddUser(string username, string password, string? id, string phone, string name, string type)
         {
