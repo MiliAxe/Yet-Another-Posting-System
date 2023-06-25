@@ -29,7 +29,7 @@ namespace Yet_Another_Posting_System
 
         private void SignupButton_Click(object sender, RoutedEventArgs e)
         {
-            users.AddUser(usernameBox.Text, PasswordBox.Password);
+            users.AddUser(usernameBox.Text, PasswordBox.Password, "Employee");
         }
     }
 }

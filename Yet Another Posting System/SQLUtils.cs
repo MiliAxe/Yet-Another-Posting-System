@@ -19,7 +19,7 @@ namespace Yet_Another_Posting_System
         {
             this.dtConnection.Open();
 
-            string createTableQuery = "CREATE TABLE IF NOT EXISTS Users (Username TEXT, Password TEXT)";
+            string createTableQuery = "CREATE TABLE IF NOT EXISTS Users (Username TEXT, Password TEXT, Type TEXT)";
             using (SQLiteCommand createTableCommand = new SQLiteCommand(createTableQuery, this.dtConnection))
             {
                 createTableCommand.ExecuteNonQuery();
@@ -28,7 +28,7 @@ namespace Yet_Another_Posting_System
             this.dtConnection.Close();
         }
 
-        public bool AuthenticateUser(string username, string password)
+        public string? AuthenticateUser(string username, string password)
         {
             this.dtConnection.Open();
 
@@ -41,14 +41,15 @@ namespace Yet_Another_Posting_System
                     {
                         if (reader["Username"].ToString() == username && reader["Password"].ToString() == password)
                         {
+                            string? result = reader["Type"].ToString();
                             dtConnection.Close();
-                            return true;
+                            return result;
                         }
                     }
                 }
             }
             dtConnection.Close();
-            return false;
+            return null;
         }
 
         public bool UserExists(string username)
@@ -75,7 +76,7 @@ namespace Yet_Another_Posting_System
             return false;
         }
 
-        public void AddUser(string username, string password)
+        public void AddUser(string username, string password, string type)
         {
             if (UserExists(username) == true)
             {
@@ -84,11 +85,12 @@ namespace Yet_Another_Posting_System
 
             this.dtConnection.Open();
 
-            string insertQuery = "INSERT INTO Users (Username, Password) VALUES (@Username, @Password);";
+            string insertQuery = "INSERT INTO Users (Username, Password, Type) VALUES (@Username, @Password, @Type);";
             using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, this.dtConnection))
             {
                 insertCommand.Parameters.AddWithValue("@Username", username);
                 insertCommand.Parameters.AddWithValue("@Password", password);
+                insertCommand.Parameters.AddWithValue("@Type", type);
                 insertCommand.ExecuteNonQuery();
             }
 

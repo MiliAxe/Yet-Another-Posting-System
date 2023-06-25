@@ -19,7 +19,7 @@ namespace Yet_Another_Posting_System
     /// </summary>
     public partial class WorkerMain : Window
     {
-        public WorkerMain()
+        public WorkerMain(string username)
         {
             InitializeComponent();
         }

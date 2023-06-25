@@ -30,9 +30,10 @@ namespace Yet_Another_Posting_System
 
         private void LoginButtonClick(object sender, RoutedEventArgs e)
         {
-            if (users.AuthenticateUser(usernameBox.Text, PasswordBox.Password))
+            if (users.AuthenticateUser(usernameBox.Text, PasswordBox.Password) != null)
             {
                 PasswordBox.BorderBrush = new SolidColorBrush(Colors.Green);
+                MessageBox.Show(users.AuthenticateUser(usernameBox.Text, PasswordBox.Password));
             }
             else
             {
