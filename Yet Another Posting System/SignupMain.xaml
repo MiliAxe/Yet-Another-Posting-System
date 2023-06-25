@@ -5,19 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Yet_Another_Posting_System"
         mc:Ignorable="d"
-        Title="Signup Window" Height="200" Width="200">
+        Title="Signup Window" Height="387" Width="200">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
-            <TextBlock x:Name="MainTextbox" TextWrapping="Wrap" Text="Employee Signup" Height="22" Width="96" FontStyle="Italic" Margin="0,0,0,-3" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock x:Name="MainTextbox" TextWrapping="Wrap" Text="Employee Signup" Height="22" Width="96" FontStyle="Italic" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <StackPanel Orientation="Vertical" Margin="0,0,0,10">
-
-
                 <TextBlock TextWrapping="Wrap" Text="Username"/>
                 <TextBox x:Name="usernameBox" TextWrapping="Wrap" Width="120" Background="#FFF1F1F1"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                <TextBlock TextWrapping="Wrap" Text="ID"/>
+                <TextBox x:Name="idBox" TextWrapping="Wrap" Width="120" Background="#FFF1F1F1"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                <TextBlock TextWrapping="Wrap" Text="Name"/>
+                <TextBox x:Name="nameBox" TextWrapping="Wrap" Width="120" Background="#FFF1F1F1"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                <TextBlock TextWrapping="Wrap" Text="Phone"/>
+                <TextBox x:Name="phoneBox" TextWrapping="Wrap" Width="120" Background="#FFF1F1F1"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock TextWrapping="Wrap" Text="Password"/>
                 <PasswordBox x:Name="PasswordBox" Width="120" Background="#FFF1F1F1"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock TextWrapping="Wrap" Text="Repeat Password"/>
+                <PasswordBox x:Name="RepeatPasswordBox" Width="120" Background="#FFF1F1F1"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,15,0,0" HorizontalAlignment="Center">
                 <Button x:Name="SignupButton" Content="Signup" Padding="10,1,10,1" Click="SignupButton_Click"/>

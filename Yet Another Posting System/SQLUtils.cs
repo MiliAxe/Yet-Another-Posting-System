@@ -19,7 +19,7 @@ namespace Yet_Another_Posting_System
         {
             this.dtConnection.Open();
 
-            string createTableQuery = "CREATE TABLE IF NOT EXISTS Users (Username TEXT, Password TEXT, Type TEXT)";
+            string createTableQuery = "CREATE TABLE IF NOT EXISTS Users (Username TEXT, Password TEXT, ID TEXT, Phone TEXT, Name TEXT, Type TEXT)";
             using (SQLiteCommand createTableCommand = new SQLiteCommand(createTableQuery, this.dtConnection))
             {
                 createTableCommand.ExecuteNonQuery();
@@ -76,7 +76,7 @@ namespace Yet_Another_Posting_System
             return false;
         }
 
-        public void AddUser(string username, string password, string type)
+        public void AddUser(string username, string password, string? id, string phone, string name, string type)
         {
             if (UserExists(username) == true)
             {
@@ -85,12 +85,15 @@ namespace Yet_Another_Posting_System
 
             this.dtConnection.Open();
 
-            string insertQuery = "INSERT INTO Users (Username, Password, Type) VALUES (@Username, @Password, @Type);";
+            string insertQuery = "INSERT INTO Users (Username, Password, ID, Phone, Name) VALUES (@Username, @Password, @ID, @Phone, @Name);";
             using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, this.dtConnection))
             {
                 insertCommand.Parameters.AddWithValue("@Username", username);
                 insertCommand.Parameters.AddWithValue("@Password", password);
-                insertCommand.Parameters.AddWithValue("@Type", type);
+                insertCommand.Parameters.AddWithValue("@ID", id);
+                insertCommand.Parameters.AddWithValue("@Phone", phone);
+                insertCommand.Parameters.AddWithValue("@Name", name);
+                insertCommand.Parameters.AddWithValue("@Name", type);
                 insertCommand.ExecuteNonQuery();
             }
 

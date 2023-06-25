@@ -29,7 +29,7 @@ namespace Yet_Another_Posting_System
 
         private async void SignupButton_Click(object sender, RoutedEventArgs e)
         {
-            users.AddUser(usernameBox.Text, PasswordBox.Password, "Employee");
+            users.AddUser
             MainTextbox.Text = "User created successfully";
             MainTextbox.FontSize = 10;
             MainTextbox.Width = 120;
