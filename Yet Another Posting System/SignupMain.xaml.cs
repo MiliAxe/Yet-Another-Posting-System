@@ -27,9 +27,15 @@ namespace Yet_Another_Posting_System
             InitializeComponent();
         }
 
-        private void SignupButton_Click(object sender, RoutedEventArgs e)
+        private async void SignupButton_Click(object sender, RoutedEventArgs e)
         {
             users.AddUser(usernameBox.Text, PasswordBox.Password, "Employee");
+            MainTextbox.Text = "User created successfully";
+            MainTextbox.FontSize = 10;
+            MainTextbox.Width = 120;
+            SignupButton.IsEnabled = false;
+            await Task.Delay(2000);
+            Close();
         }
     }
 }

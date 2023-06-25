@@ -8,7 +8,7 @@
         Title="Signup Window" Height="200" Width="200">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
-            <TextBlock TextWrapping="Wrap" Text="Employee Signup" Height="22" Width="96" FontStyle="Italic" Margin="0,0,0,-3" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock x:Name="MainTextbox" TextWrapping="Wrap" Text="Employee Signup" Height="22" Width="96" FontStyle="Italic" Margin="0,0,0,-3" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <StackPanel Orientation="Vertical" Margin="0,0,0,10">
 
 
