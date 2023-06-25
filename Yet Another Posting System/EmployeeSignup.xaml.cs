@@ -17,11 +17,11 @@ namespace Yet_Another_Posting_System
     /// <summary>
     /// Interaction logic for Signup.xaml
     /// </summary>
-    public partial class SignupMain : Window
+    public partial class EmployeeSignup : Window
     {
         UsersDatabase users;
 
-        public SignupMain(UsersDatabase users)
+        public EmployeeSignup(UsersDatabase users)
         {
             this.users = users;
             InitializeComponent();

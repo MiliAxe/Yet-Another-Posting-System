@@ -44,7 +44,7 @@ namespace Yet_Another_Posting_System
 
         private void SignupButton_Click(object sender, RoutedEventArgs e)
         {
-            SignupMain signupWindow = new SignupMain(users);
+            EmployeeSignup signupWindow = new EmployeeSignup(users);
             signupWindow.Show();
         }
     }

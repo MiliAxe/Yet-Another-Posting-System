@@ -17,9 +17,9 @@ namespace Yet_Another_Posting_System
     /// <summary>
     /// Interaction logic for WorkerMain.xaml
     /// </summary>
-    public partial class WorkerMain : Window
+    public partial class EmployeeMain : Window
     {
-        public WorkerMain(string username)
+        public EmployeeMain(string username)
         {
             InitializeComponent();
         }
