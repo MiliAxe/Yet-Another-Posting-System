@@ -32,6 +32,11 @@ namespace Yet_Another_Posting_System
                 throw new Exception("Please fill in all the information");
             }
 
+            WPFUtils.CheckName(nameBox);
+            WPFUtils.CheckCustomerID(idBox);
+            WPFUtils.CheckEmail(emailBox);
+            WPFUtils.CheckPhone(phoneBox);
+
             Tuple<string, string, string> userPass = App.usersDb.GenerateUser(emailBox.Text, idBox.Text, phoneBox.Text, nameBox.Text, "Customer");
 
 

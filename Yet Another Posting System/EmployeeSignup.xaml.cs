@@ -31,6 +31,12 @@ namespace Yet_Another_Posting_System
                 throw new Exception("Please fill in all the information");
             }
 
+            WPFUtils.CheckEmail(emailBox);
+            WPFUtils.CheckEmployeeID(idBox);
+            WPFUtils.CheckName(nameBox);
+            WPFUtils.CheckPhone(phoneBox);
+            WPFUtils.CheckPassword(PasswordBox);
+
             if (PasswordBox.Password != RepeatPasswordBox.Password)
             {
                 throw new Exception("Please enter the same password");

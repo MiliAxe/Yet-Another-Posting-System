@@ -126,7 +126,7 @@ namespace Yet_Another_Posting_System
             dtConnection.Close();
         }
 
-        public string GenerateRandomString(int length)
+        /*public string GenerateRandomString(int length)
         {
             var random = new Random();
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -138,18 +138,20 @@ namespace Yet_Another_Posting_System
             }
 
             return result;
-        }
+        }*/
 
         public Tuple<string, string, string> GenerateUser(string email, string id, string phone, string name, string type)
         {
-            string randomUsername = GenerateRandomString(10);
+            var random = new Random();
+
+            string randomUsername = "user" + random.Next(0, 9999).ToString();
 
             while (TypeUserExists(randomUsername, type) == true)
             {
-                randomUsername = GenerateRandomString(10);
+                randomUsername = "user" + random.Next(0, 9999).ToString();
             }
 
-            string randomPassword = GenerateRandomString(10);
+            string randomPassword = "user" + random.Next(10000000, 99999999).ToString();
 
             AddUser(randomUsername, randomPassword, email, id, phone, name, type);
 

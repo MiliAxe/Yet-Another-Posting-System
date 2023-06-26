@@ -35,38 +35,42 @@ namespace Yet_Another_Posting_System
 
         public static void CheckName(TextBox textBox)
         {
-            if (Regex.IsMatch(textBox.Text, @"^[a-zA-Z]+$") == false)
+            if (!Regex.IsMatch(textBox.Text, @"^[a-zA-Z]+$"))
             {
                 textBox.BorderBrush = new SolidColorBrush(Colors.Red);
                 throw new Exception("The name needs to be from 3 to 32 characters");
             }
+            textBox.BorderBrush = new SolidColorBrush(Colors.White);
         }
 
         public static void CheckEmail(TextBox textBox)
         {
-            if (!Regex.IsMatch(textBox.Text, @"^\S{3,32}@\S{3,32}\.\S{2,3}$") == false)
+            if (!Regex.IsMatch(textBox.Text, @"^\S{3,32}@\S{3,32}\.\S{2,3}$"))
             {
                 textBox.BorderBrush = new SolidColorBrush(Colors.Red);
                 throw new Exception("The email isn't in the correct format");
             }
+            textBox.BorderBrush = new SolidColorBrush(Colors.White);
         }
 
         public static void CheckPhone(TextBox textBox)
         {
-            if (!Regex.IsMatch(textBox.Text, @"^09\d{9}$") == false)
+            if (!Regex.IsMatch(textBox.Text, @"^09\d{9}$"))
             {
                 textBox.BorderBrush = new SolidColorBrush(Colors.Red);
                 throw new Exception("The phone isn't in the correct format");
             }
+            textBox.BorderBrush = new SolidColorBrush(Colors.White);
         }
 
-        public static void CheckPassword(TextBox textBox)
+        public static void CheckPassword(PasswordBox passwordBox)
         {
-            if (!Regex.IsMatch(textBox.Text, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,32}$") == false)
+            if (!Regex.IsMatch(passwordBox.Password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,32}$"))
             {
-                textBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                passwordBox.BorderBrush = new SolidColorBrush(Colors.Red);
                 throw new Exception("The password isn't in the correct format");
             }
+            passwordBox.BorderBrush = new SolidColorBrush(Colors.White);
         }
 
         public static void CheckEmployeeID(TextBox textBox)
@@ -76,6 +80,17 @@ namespace Yet_Another_Posting_System
                 textBox.BorderBrush = new SolidColorBrush(Colors.Red);
                 throw new Exception("The Employee ID isn't in the correct format");
             }
+            textBox.BorderBrush = new SolidColorBrush(Colors.White);
+        }
+
+        public static void CheckCustomerID(TextBox textBox)
+        {
+            if (!Regex.IsMatch(textBox.Text, @"^00\d{8}$"))
+            {
+                textBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                throw new Exception("The Customer ID isn't in the correct format");
+            }
+            textBox.BorderBrush = new SolidColorBrush(Colors.White);
         }
     }
 }
