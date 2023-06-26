@@ -151,7 +151,7 @@ namespace Yet_Another_Posting_System
                 randomUsername = "user" + random.Next(0, 9999).ToString();
             }
 
-            string randomPassword = "user" + random.Next(10000000, 99999999).ToString();
+            string randomPassword = random.Next(10000000, 99999999).ToString();
 
             AddUser(randomUsername, randomPassword, email, id, phone, name, type);
 

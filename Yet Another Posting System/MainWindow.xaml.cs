@@ -25,12 +25,12 @@ namespace Yet_Another_Posting_System
                 {
                     case "Employee":
                         EmployeeMain employeeMain = new EmployeeMain(usernameBox.Text);
-                        employeeMain.Show();
+                        employeeMain.ShowDialog();
                         break;
 
                     case "Customer":
                         CustomerMain customerMain = new CustomerMain(usernameBox.Text);
-                        customerMain.Show();
+                        customerMain.ShowDialog();
                         break;
 
                     default:
@@ -47,7 +47,7 @@ namespace Yet_Another_Posting_System
         private void SignupButton_Click(object sender, RoutedEventArgs e)
         {
             EmployeeSignup signupWindow = new EmployeeSignup();
-            signupWindow.Show();
+            signupWindow.ShowDialog();
         }
     }
 }

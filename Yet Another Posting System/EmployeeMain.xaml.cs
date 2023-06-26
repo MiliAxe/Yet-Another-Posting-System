@@ -30,7 +30,7 @@ namespace Yet_Another_Posting_System
         private void CreateCustomerButton_Click(object sender, RoutedEventArgs e)
         {
             CustomerSignup customerSignup = new CustomerSignup();
-            customerSignup.Show();
+            customerSignup.ShowDialog();
         }
     }
 }

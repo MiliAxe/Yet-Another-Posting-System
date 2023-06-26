@@ -20,5 +20,6 @@ namespace Yet_Another_Posting_System
             MessageBox.Show("An error occured: " + e.Exception.Message, "Error");
             e.Handled = true;
         }
+
     }
 }

@@ -40,7 +40,7 @@ namespace Yet_Another_Posting_System
                 textBox.BorderBrush = new SolidColorBrush(Colors.Red);
                 throw new Exception("The name needs to be from 3 to 32 characters");
             }
-            textBox.BorderBrush = new SolidColorBrush(Colors.White);
+            textBox.BorderBrush = new SolidColorBrush(Colors.Black);
         }
 
         public static void CheckEmail(TextBox textBox)
@@ -50,7 +50,7 @@ namespace Yet_Another_Posting_System
                 textBox.BorderBrush = new SolidColorBrush(Colors.Red);
                 throw new Exception("The email isn't in the correct format");
             }
-            textBox.BorderBrush = new SolidColorBrush(Colors.White);
+            textBox.BorderBrush = new SolidColorBrush(Colors.Black);
         }
 
         public static void CheckPhone(TextBox textBox)
@@ -60,7 +60,7 @@ namespace Yet_Another_Posting_System
                 textBox.BorderBrush = new SolidColorBrush(Colors.Red);
                 throw new Exception("The phone isn't in the correct format");
             }
-            textBox.BorderBrush = new SolidColorBrush(Colors.White);
+            textBox.BorderBrush = new SolidColorBrush(Colors.Black);
         }
 
         public static void CheckPassword(PasswordBox passwordBox)
@@ -70,7 +70,7 @@ namespace Yet_Another_Posting_System
                 passwordBox.BorderBrush = new SolidColorBrush(Colors.Red);
                 throw new Exception("The password isn't in the correct format");
             }
-            passwordBox.BorderBrush = new SolidColorBrush(Colors.White);
+            passwordBox.BorderBrush = new SolidColorBrush(Colors.Black);
         }
 
         public static void CheckEmployeeID(TextBox textBox)
@@ -80,7 +80,7 @@ namespace Yet_Another_Posting_System
                 textBox.BorderBrush = new SolidColorBrush(Colors.Red);
                 throw new Exception("The Employee ID isn't in the correct format");
             }
-            textBox.BorderBrush = new SolidColorBrush(Colors.White);
+            textBox.BorderBrush = new SolidColorBrush(Colors.Black);
         }
 
         public static void CheckCustomerID(TextBox textBox)
@@ -90,7 +90,7 @@ namespace Yet_Another_Posting_System
                 textBox.BorderBrush = new SolidColorBrush(Colors.Red);
                 throw new Exception("The Customer ID isn't in the correct format");
             }
-            textBox.BorderBrush = new SolidColorBrush(Colors.White);
+            textBox.BorderBrush = new SolidColorBrush(Colors.Black);
         }
     }
 }
