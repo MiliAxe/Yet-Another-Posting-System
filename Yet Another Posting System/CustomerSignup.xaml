@@ -8,7 +8,7 @@
         ResizeMode="NoResize"
         Title="CustomerSignup" Height="340" Width="200">
     <StackPanel x:Name="MainStackPanel" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="0,0,0,10">Customer Signup</TextBlock>
+        <TextBlock x:Name="mainText" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="0,0,0,10">Customer Signup</TextBlock>
         <StackPanel Margin="0,0,0,5">
             <TextBlock>Name</TextBlock>
             <TextBox x:Name="nameBox" Background="#FFF1F1F1"></TextBox>

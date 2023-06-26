@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System.Text.RegularExpressions;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Yet_Another_Posting_System
 {
@@ -41,6 +31,51 @@ namespace Yet_Another_Posting_System
             }
 
             return isEmpty;
+        }
+
+        public static void CheckName(TextBox textBox)
+        {
+            if (Regex.IsMatch(textBox.Text, @"^[a-zA-Z]+$") == false)
+            {
+                textBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                throw new Exception("The name needs to be from 3 to 32 characters");
+            }
+        }
+
+        public static void CheckEmail(TextBox textBox)
+        {
+            if (!Regex.IsMatch(textBox.Text, @"^\S{3,32}@\S{3,32}\.\S{2,3}$") == false)
+            {
+                textBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                throw new Exception("The email isn't in the correct format");
+            }
+        }
+
+        public static void CheckPhone(TextBox textBox)
+        {
+            if (!Regex.IsMatch(textBox.Text, @"^09\d{9}$") == false)
+            {
+                textBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                throw new Exception("The phone isn't in the correct format");
+            }
+        }
+
+        public static void CheckPassword(TextBox textBox)
+        {
+            if (!Regex.IsMatch(textBox.Text, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,32}$") == false)
+            {
+                textBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                throw new Exception("The password isn't in the correct format");
+            }
+        }
+
+        public static void CheckEmployeeID(TextBox textBox)
+        {
+            if(!Regex.IsMatch(textBox.Text, @"^\d{2}9\d{2}$"))
+            {
+                textBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                throw new Exception("The Employee ID isn't in the correct format");
+            }
         }
     }
 }
