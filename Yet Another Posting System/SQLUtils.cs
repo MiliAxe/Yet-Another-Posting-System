@@ -19,7 +19,7 @@ namespace Yet_Another_Posting_System
         {
             this.dtConnection.Open();
 
-            string createTableQuery = "CREATE TABLE IF NOT EXISTS Users (Username TEXT, Password TEXT, ID TEXT, Phone TEXT, Name TEXT, Type TEXT)";
+            string createTableQuery = "CREATE TABLE IF NOT EXISTS Users (Username TEXT, Password TEXT, Email TEXT, ID TEXT, Phone TEXT, Name TEXT, Type TEXT)";
             using (SQLiteCommand createTableCommand = new SQLiteCommand(createTableQuery, this.dtConnection))
             {
                 createTableCommand.ExecuteNonQuery();
@@ -100,7 +100,7 @@ namespace Yet_Another_Posting_System
             return false;
         } 
 
-        public void AddUser(string username, string password, string? id, string phone, string name, string type)
+        public void AddUser(string username, string password, string email, string? id, string phone, string name, string type)
         {
             if (UserExists(username) == true)
             {
@@ -109,7 +109,7 @@ namespace Yet_Another_Posting_System
 
             this.dtConnection.Open();
 
-            string insertQuery = "INSERT INTO Users (Username, Password, ID, Phone, Name, Type) VALUES (@Username, @Password, @ID, @Phone, @Name, @Type);";
+            string insertQuery = "INSERT INTO Users (Username, Password, Email, ID, Phone, Name, Type) VALUES (@Username, @Password, @Email, @ID, @Phone, @Name, @Type);";
             using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, this.dtConnection))
             {
                 insertCommand.Parameters.AddWithValue("@Username", username);
@@ -118,6 +118,7 @@ namespace Yet_Another_Posting_System
                 insertCommand.Parameters.AddWithValue("@Phone", phone);
                 insertCommand.Parameters.AddWithValue("@Name", name);
                 insertCommand.Parameters.AddWithValue("@Type", type);
+                insertCommand.Parameters.AddWithValue("@Email", email);
                 insertCommand.ExecuteNonQuery();
             }
 

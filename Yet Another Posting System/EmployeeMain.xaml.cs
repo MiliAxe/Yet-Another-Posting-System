@@ -19,8 +19,11 @@ namespace Yet_Another_Posting_System
     /// </summary>
     public partial class EmployeeMain : Window
     {
+        public string username;
+
         public EmployeeMain(string username)
         {
+            this.username = username;
             InitializeComponent();
         }
 

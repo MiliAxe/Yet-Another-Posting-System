@@ -65,7 +65,7 @@ namespace Yet_Another_Posting_System
                 throw new Exception("Please enter the same password");
             }
 
-            users.AddUser(usernameBox.Text, PasswordBox.Password, idBox.Text, phoneBox.Text, nameBox.Text, "Employee");
+            users.AddUser(usernameBox.Text, PasswordBox.Password, emailBox.Text, idBox.Text, phoneBox.Text, nameBox.Text, "Employee");
 
             MainTextbox.Text = "User created successfully";
             MainTextbox.FontSize = 10;
