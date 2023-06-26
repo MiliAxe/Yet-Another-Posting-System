@@ -27,14 +27,10 @@ namespace Yet_Another_Posting_System
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void CreateCustomerButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
+            CustomerSignup customerSignup = new CustomerSignup();
+            customerSignup.Show();
         }
     }
 }

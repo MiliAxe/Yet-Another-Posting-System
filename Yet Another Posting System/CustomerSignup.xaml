@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Yet_Another_Posting_System"
         mc:Ignorable="d"
-        Title="CustomerSignup" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        ResizeMode="NoResize"
+        Title="CustomerSignup" Height="340" Width="200">
+    <StackPanel x:Name="MainStackPanel" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="0,0,0,10">Customer Signup</TextBlock>
+        <StackPanel Margin="0,0,0,5">
+            <TextBlock>Name</TextBlock>
+            <TextBox x:Name="nameBox" Background="#FFF1F1F1"></TextBox>
+        </StackPanel>
+        <StackPanel Margin="0,0,0,5">
+            <TextBlock Width="170">ID</TextBlock>
+            <TextBox x:Name="idBox" Background="#FFF1F1F1"/>
+        </StackPanel>
+        <StackPanel Margin="0,0,0,4">
+            <TextBlock>Email</TextBlock>
+            <TextBox x:Name="emailBox" Background="#FFF1F1F1"/>
+        </StackPanel>
+        <StackPanel>
+            <TextBlock>Phone</TextBlock>
+            <TextBox x:Name="phoneBox" Background="#FFF1F1F1" Margin="0,0,0,20"/>
+        </StackPanel>
+        <Button x:Name="signupButton" HorizontalAlignment="Center" VerticalAlignment="Center" Width="55" Click="signupButton_Click">Signup</Button>
+    </StackPanel>
 </Window>

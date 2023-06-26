@@ -19,43 +19,14 @@ namespace Yet_Another_Posting_System
     /// </summary>
     public partial class EmployeeSignup : Window
     {
-        UsersDatabase users;
-
-        public EmployeeSignup(UsersDatabase users)
+        public EmployeeSignup()
         {
-            this.users = users;
             InitializeComponent();
-        }
-
-        private bool AreTextBoxesEmpty(StackPanel stackPanel)
-        {
-            bool isEmpty = false;
-            foreach (var item in stackPanel.Children)
-            {
-                if (item is TextBox text && string.IsNullOrEmpty(text.Text))
-                {
-                    isEmpty = true;
-                    text.BorderBrush = new SolidColorBrush(Colors.Red);
-                }
-
-                if (item is PasswordBox password && string.IsNullOrEmpty(password.Password))
-                {
-                    isEmpty = true;
-                    password.BorderBrush = new SolidColorBrush(Colors.Red);
-                }
-
-                if (item is StackPanel stackPanelRecursion)
-                {
-                    isEmpty = AreTextBoxesEmpty(stackPanelRecursion);
-                }
-            }
-
-            return isEmpty;
         }
 
         private async void SignupButton_Click(object sender, RoutedEventArgs e)
         {
-            if (AreTextBoxesEmpty(MainStackPanel) == true)
+            if (WPFUtils.AreTextBoxesEmpty(MainStackPanel) == true)
             {
                 throw new Exception("Please fill in all the information");
             }
@@ -65,7 +36,7 @@ namespace Yet_Another_Posting_System
                 throw new Exception("Please enter the same password");
             }
 
-            users.AddUser(usernameBox.Text, PasswordBox.Password, emailBox.Text, idBox.Text, phoneBox.Text, nameBox.Text, "Employee");
+            App.usersDb.AddUser(usernameBox.Text, PasswordBox.Password, emailBox.Text, idBox.Text, phoneBox.Text, nameBox.Text, "Employee");
 
             MainTextbox.Text = "User created successfully";
             MainTextbox.FontSize = 10;

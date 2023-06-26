@@ -19,8 +19,11 @@ namespace Yet_Another_Posting_System
     /// </summary>
     public partial class CustomerMain : Window
     {
-        public CustomerMain()
+        string username;
+
+        public CustomerMain(string username)
         {
+            this.username = username;
             InitializeComponent();
         }
 

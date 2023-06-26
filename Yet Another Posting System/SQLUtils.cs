@@ -1,4 +1,5 @@
-﻿using System.Data.SQLite;
+﻿using System;
+using System.Data.SQLite;
 
 namespace Yet_Another_Posting_System
 {
@@ -74,7 +75,7 @@ namespace Yet_Another_Posting_System
             }
             this.dtConnection.Close();
             return false;
-        } 
+        }
 
         public bool TypeUserExists(string username, string type)
         {
@@ -98,11 +99,11 @@ namespace Yet_Another_Posting_System
             }
             this.dtConnection.Close();
             return false;
-        } 
+        }
 
         public void AddUser(string username, string password, string email, string? id, string phone, string name, string type)
         {
-            if (UserExists(username) == true)
+            if (TypeUserExists(username, type) == true)
             {
                 throw new System.Exception("This user already exists");
             }
@@ -123,6 +124,36 @@ namespace Yet_Another_Posting_System
             }
 
             dtConnection.Close();
+        }
+
+        public string GenerateRandomString(int length)
+        {
+            var random = new Random();
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            string result = "";
+
+            for (int i = 0; i < length; i++)
+            {
+                result += chars[random.Next(chars.Length)];
+            }
+
+            return result;
+        }
+
+        public Tuple<string, string, string> GenerateUser(string email, string id, string phone, string name, string type)
+        {
+            string randomUsername = GenerateRandomString(10);
+
+            while (TypeUserExists(randomUsername, type) == true)
+            {
+                randomUsername = GenerateRandomString(10);
+            }
+
+            string randomPassword = GenerateRandomString(10);
+
+            AddUser(randomUsername, randomPassword, email, id, phone, name, type);
+
+            return Tuple.Create(randomUsername, randomPassword, email);
         }
     }
 }

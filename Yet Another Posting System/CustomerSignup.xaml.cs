@@ -23,5 +23,20 @@ namespace Yet_Another_Posting_System
         {
             InitializeComponent();
         }
+
+        private void signupButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (WPFUtils.AreTextBoxesEmpty(MainStackPanel) == true)
+            {
+                throw new Exception("Please fill in all the information");
+            }
+
+            Tuple<string, string, string> userPass = App.usersDb.GenerateUser(emailBox.Text, idBox.Text, phoneBox.Text, nameBox.Text, "Customer");
+
+
+            MailUtils mail = new MailUtils("miliaxe0@gmail.com", "Milad Zarei", "nxmuydnsxmdblzpz");
+
+            mail.SendMail(userPass.Item3, "Posting system user pass", $"User: {userPass.Item1}\nPass: {userPass.Item2}");
+        }
     }
 }
