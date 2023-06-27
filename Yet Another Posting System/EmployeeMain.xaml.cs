@@ -32,5 +32,16 @@ namespace Yet_Another_Posting_System
             CustomerSignup customerSignup = new CustomerSignup();
             customerSignup.ShowDialog();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PlaceOrderButton_Click(object sender, RoutedEventArgs e)
+        {
+            PlaceOrder placeOrder = new PlaceOrder();
+            placeOrder.ShowDialog();
+        }
     }
 }
