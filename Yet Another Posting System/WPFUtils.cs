@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -31,6 +32,25 @@ namespace Yet_Another_Posting_System
             }
 
             return isEmpty;
+        }
+
+        public static void EnableAll(Panel panel)
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(panel); i++)
+            {
+                var child = VisualTreeHelper.GetChild(panel, i);
+
+                if (child is UIElement uiElement)
+                {
+                    uiElement.IsEnabled = true;
+                }
+
+                if (child is Panel castedPanel)
+                {
+                    EnableAll(castedPanel);
+                }
+
+            }
         }
 
         public static void CheckName(TextBox textBox)

@@ -181,7 +181,6 @@ namespace Yet_Another_Posting_System
             return result;
         }
 
-
         public Tuple<string, string, string> GenerateUser(string email, string id, string phone, string name, string type)
         {
             var random = new Random();

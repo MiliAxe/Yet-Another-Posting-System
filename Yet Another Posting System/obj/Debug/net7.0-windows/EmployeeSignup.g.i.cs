@@ -133,7 +133,7 @@ namespace Yet_Another_Posting_System {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Yet Another Posting System;V1.0.0.0;component/employeesignup.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Yet Another Posting System;component/employeesignup.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\EmployeeSignup.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
