@@ -1,5 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -20,7 +19,7 @@ namespace Yet_Another_Posting_System
             string? userLogin = App.usersDb.AuthenticateUser(usernameBox.Text, PasswordBox.Password);
             if (userLogin != null)
             {
-                        PasswordBox.BorderBrush = new SolidColorBrush(Colors.Green);
+                PasswordBox.BorderBrush = new SolidColorBrush(Colors.Green);
                 switch (userLogin)
                 {
                     case "Employee":

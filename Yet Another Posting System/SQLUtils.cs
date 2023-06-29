@@ -227,11 +227,11 @@ namespace Yet_Another_Posting_System
             int nextOrderID = NextOrderID();
             string insertQuery = $"INSERT INTO Orders (OrderID, CustomerID, SendAddress, ReceiveAddress, ContentIndex, TypeIndex, Expensive, Weight, Phone, Cost) VALUES ({nextOrderID}, '{customerID}', '{sendAddress}', '{receiveAddress}', {contentIndex}, {typeIndex}, {isExpensive}, {weight}, '{phone}', {cost});";
 
-                using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, this.dtConnection))
-                {
-                    dtConnection.Open();
-                    insertCommand.ExecuteNonQuery();
-                }
+            using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, this.dtConnection))
+            {
+                dtConnection.Open();
+                insertCommand.ExecuteNonQuery();
+            }
             dtConnection.Close();
         }
     }

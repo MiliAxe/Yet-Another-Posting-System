@@ -1,0 +1,45 @@
+﻿<Window x:Class="Yet_Another_Posting_System.SearchOrder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Yet_Another_Posting_System"
+        mc:Ignorable="d"
+        Title="SearchOrder" Height="438" Width="500">
+    <Grid Margin="0,0,0,-6">
+        <Label Content="Order search" VerticalAlignment="Top" FontWeight="Bold" Height="26" HorizontalAlignment="Center"/>
+        <Grid Margin="20,0,20,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Label Content="Customer ID" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Grid.Row="1" Height="26" Width="76"/>
+            <TextBox x:Name="customerIDBox" TextWrapping="Wrap" VerticalAlignment="Center" Margin="86,0,10,0" Grid.Row="1" Height="18"/>
+            <Label Content="Weight" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1" Height="26" Width="48"/>
+            <TextBox x:Name="weightBox" TextWrapping="Wrap" VerticalAlignment="Center" Margin="73,0,10,0" Grid.Row="1" Grid.Column="1" Height="18"/>
+            <ComboBox x:Name="contentBox" VerticalAlignment="Center" Margin="86,0,10,0" Grid.Row="2" Height="22">
+                <ComboBoxItem Content="Object"/>
+                <ComboBoxItem Content="Documents"/>
+                <ComboBoxItem Content="Breakable"/>
+            </ComboBox>
+            <Label Content="Post Content" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Height="26" Width="78"/>
+            <Label Content="Post Type" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Grid.Row="2" Grid.Column="1" Height="26" Width="61"/>
+            <ComboBox x:Name="postTypeBox" VerticalAlignment="Center" Margin="73,0,10,0" Grid.Row="2" Grid.Column="1" Height="22">
+                <ComboBoxItem Content="Normal"/>
+                <ComboBoxItem Content="Prime"/>
+            </ComboBox>
+            <Label Content="Cost" VerticalAlignment="Center" Grid.Row="3" Height="26" HorizontalAlignment="Right" Width="39"/>
+            <TextBox x:Name="costBox" HorizontalAlignment="Left" TextWrapping="Wrap" Width="120" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Row="3" Grid.Column="1" Height="18"/>
+            <Button x:Name="searchButton" Content="Search" Margin="204,0,204,0" VerticalAlignment="Center" Click="searchButton_Click" Grid.Row="5" Height="20" Grid.ColumnSpan="2"/>
+            <DataGrid x:Name="dtGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,4,0,5" Grid.Row="4" Grid.ColumnSpan="2"/>
+        </Grid>
+    </Grid>
+</Window>

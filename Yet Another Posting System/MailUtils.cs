@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
 
@@ -35,7 +31,7 @@ namespace Yet_Another_Posting_System
             var toAddress = new MailAddress(address);
             try
             {
-                using (var messsage = new MailMessage(fromAddress, toAddress) { Subject = subject, Body = body})
+                using (var messsage = new MailMessage(fromAddress, toAddress) { Subject = subject, Body = body })
                 {
                     smtp.Send(messsage);
                 }

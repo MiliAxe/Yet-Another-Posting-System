@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Yet_Another_Posting_System
 {
@@ -90,7 +79,7 @@ namespace Yet_Another_Posting_System
                 throw new Exception("Calculate the cost first");
             }
 
-            if (WPFUtils.AreTextBoxesEmpty(mainGrid)) 
+            if (WPFUtils.AreTextBoxesEmpty(mainGrid))
             {
                 throw new Exception("Please fill in all the data");
             }
@@ -100,7 +89,7 @@ namespace Yet_Another_Posting_System
             // TODO if balance not enough go to rechargin window
             if (App.usersDb.UserBalance(customerIDBox.Text) > CalculateCost())
             {
-            App.usersDb.CreateOrder(customerIDBox.Text, senderAddressBox.Text, receiverAddressBox.Text, contentBox.SelectedIndex, postTypeBox.SelectedIndex, expensiveCheckBox.IsChecked == true ? 1 : 0, Double.Parse(weightBox.Text), phoneBox.Text, CalculateCost());
+                App.usersDb.CreateOrder(customerIDBox.Text, senderAddressBox.Text, receiverAddressBox.Text, contentBox.SelectedIndex, postTypeBox.SelectedIndex, expensiveCheckBox.IsChecked == true ? 1 : 0, Double.Parse(weightBox.Text), phoneBox.Text, CalculateCost());
             }
         }
     }

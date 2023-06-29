@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Yet_Another_Posting_System
 {
@@ -44,7 +34,7 @@ namespace Yet_Another_Posting_System
             using (StreamReader stream = new StreamReader("Credentials.txt"))
             {
                 string? line;
-                while ((line =  stream.ReadLine()) != null)
+                while ((line = stream.ReadLine()) != null)
                 {
                     credentials.Add(line.Trim());
                 }

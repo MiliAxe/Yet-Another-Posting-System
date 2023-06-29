@@ -95,7 +95,7 @@ namespace Yet_Another_Posting_System
 
         public static void CheckEmployeeID(TextBox textBox)
         {
-            if(!Regex.IsMatch(textBox.Text, @"^\d{2}9\d{2}$"))
+            if (!Regex.IsMatch(textBox.Text, @"^\d{2}9\d{2}$"))
             {
                 textBox.BorderBrush = new SolidColorBrush(Colors.Red);
                 throw new Exception("The Employee ID isn't in the correct format");
