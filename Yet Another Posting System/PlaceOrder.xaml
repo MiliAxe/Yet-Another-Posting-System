@@ -38,7 +38,7 @@
         </Grid>
         <Grid HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Width="210" Margin="0,184,0,0" IsEnabled="False">
             <Button x:Name="calculateButton" Content="Calculate Cost" HorizontalAlignment="Left" VerticalAlignment="Center" Width="96" IsEnabled="False" Click="calculateButton_Click"/>
-            <Button x:Name="placeOrderButton" Content="Place Order" HorizontalAlignment="Left" Margin="109,0,0,0" VerticalAlignment="Center" Width="101" IsEnabled="False"/>
+            <Button x:Name="placeOrderButton" Content="Place Order" HorizontalAlignment="Left" Margin="109,0,0,0" VerticalAlignment="Center" Width="101" IsEnabled="False" Click="placeOrderButton_Click"/>
         </Grid>
     </Grid>
 </Window>

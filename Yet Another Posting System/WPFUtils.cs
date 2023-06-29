@@ -8,7 +8,7 @@ namespace Yet_Another_Posting_System
 {
     public static class WPFUtils
     {
-        public static bool AreTextBoxesEmpty(StackPanel stackPanel)
+        public static bool AreTextBoxesEmpty(Panel stackPanel)
         {
             bool isEmpty = false;
             foreach (var item in stackPanel.Children)
@@ -25,9 +25,9 @@ namespace Yet_Another_Posting_System
                     password.BorderBrush = new SolidColorBrush(Colors.Red);
                 }
 
-                if (item is StackPanel stackPanelRecursion)
+                if (item is Panel panelRecursion)
                 {
-                    isEmpty = AreTextBoxesEmpty(stackPanelRecursion);
+                    isEmpty = AreTextBoxesEmpty(panelRecursion);
                 }
             }
 

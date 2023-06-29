@@ -72,7 +72,7 @@ namespace Yet_Another_Posting_System
 
             if (Double.Parse(weightBox.Text) > 0.5)
             {
-                totalCost *= Math.Pow(1.2, (Double.Parse(weightBox.Text) - 0.5) % 0.5);
+                totalCost *= Math.Pow(1.2, (Double.Parse(weightBox.Text) - 0.5) / 0.5);
             }
 
             return totalCost;
@@ -81,6 +81,27 @@ namespace Yet_Another_Posting_System
         private void calculateButton_Click(object sender, RoutedEventArgs e)
         {
             costBlock.Text = CalculateCost().ToString();
+        }
+
+        private void placeOrderButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(costBlock.Text))
+            {
+                throw new Exception("Calculate the cost first");
+            }
+
+            if (WPFUtils.AreTextBoxesEmpty(mainGrid)) 
+            {
+                throw new Exception("Please fill in all the data");
+            }
+
+            WPFUtils.CheckPhone(phoneBox);
+
+            // TODO if balance not enough go to rechargin window
+            if (App.usersDb.UserBalance(customerIDBox.Text) > CalculateCost())
+            {
+            App.usersDb.CreateOrder(customerIDBox.Text, senderAddressBox.Text, receiverAddressBox.Text, contentBox.SelectedIndex, postTypeBox.SelectedIndex, expensiveCheckBox.IsChecked == true ? 1 : 0, Double.Parse(weightBox.Text), phoneBox.Text, CalculateCost());
+            }
         }
     }
 }

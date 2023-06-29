@@ -30,6 +30,11 @@ namespace Yet_Another_Posting_System
             {
                 createTableCommand.ExecuteNonQuery();
             }
+            createTableQuery = "CREATE TABLE IF NOT EXISTS Orders (OrderID INT, CustomerID TEXT, SendAddress TEXT, ReceiveAddress TEXT, ContentIndex INT, TypeIndex INT, Expensive INT, Weight DOUBLE, Phone TEXT, Cost DOUBLE)";
+            using (SQLiteCommand createTableCommand = new SQLiteCommand(createTableQuery, this.dtConnection))
+            {
+                createTableCommand.ExecuteNonQuery();
+            }
 
             this.dtConnection.Close();
         }
@@ -151,7 +156,7 @@ namespace Yet_Another_Posting_System
             dtConnection.Close();
         }
 
-        public void ChangeUserBalance(string username, int balance)
+        public void ChangeUserBalance(string username, double balance)
         {
             if (TypeUserExists(username, "Customer") == false)
             {
@@ -167,9 +172,9 @@ namespace Yet_Another_Posting_System
             this.dtConnection.Open();
         }
 
-        public int UserBalance(string username)
+        public double UserBalance(string username)
         {
-            int result;
+            double result;
 
             string selectQuery = $"SELECT Balance FROM Balances WHERE Username = {username};";
             using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, this.dtConnection))
@@ -199,5 +204,36 @@ namespace Yet_Another_Posting_System
 
             return Tuple.Create(randomUsername, randomPassword, email);
         }
+
+        public int NextOrderID()
+        {
+            int result;
+            this.dtConnection.Open();
+
+            string countQuery = "SELECT COUNT(*) FROM Orders";
+            using (SQLiteCommand countCommand = new SQLiteCommand(countQuery, this.dtConnection))
+            {
+                object countResult = countCommand.ExecuteScalar();
+                result = Convert.ToInt16(countResult);
+            }
+
+            this.dtConnection.Close();
+
+            return result + 1;
+        }
+
+        public void CreateOrder(string customerID, string sendAddress, string receiveAddress, int contentIndex, int typeIndex, int isExpensive, double weight, string phone, double cost)
+        {
+            int nextOrderID = NextOrderID();
+            string insertQuery = $"INSERT INTO Orders (OrderID, CustomerID, SendAddress, ReceiveAddress, ContentIndex, TypeIndex, Expensive, Weight, Phone, Cost) VALUES ({nextOrderID}, '{customerID}', '{sendAddress}', '{receiveAddress}', {contentIndex}, {typeIndex}, {isExpensive}, {weight}, '{phone}', {cost});";
+
+                using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, this.dtConnection))
+                {
+                    dtConnection.Open();
+                    insertCommand.ExecuteNonQuery();
+                }
+            dtConnection.Close();
+        }
     }
+
 }
