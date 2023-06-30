@@ -30,7 +30,7 @@ namespace Yet_Another_Posting_System
             {
                 createTableCommand.ExecuteNonQuery();
             }
-            createTableQuery = "CREATE TABLE IF NOT EXISTS Orders (CreationDate DATETIME, OrderID INT, CustomerID TEXT, SendAddress TEXT, ReceiveAddress TEXT, ContentIndex INT, TypeIndex INT, Expensive INT, Weight DOUBLE, Phone TEXT, Cost DOUBLE)";
+            createTableQuery = "CREATE TABLE IF NOT EXISTS Orders (CreationDate DATETIME, OrderID INT, CustomerID TEXT, SendAddress TEXT, ReceiveAddress TEXT, ContentIndex INT, TypeIndex INT, Expensive INT, Weight DOUBLE, Phone TEXT, Cost DOUBLE, Status INT)";
             using (SQLiteCommand createTableCommand = new SQLiteCommand(createTableQuery, this.dtConnection))
             {
                 createTableCommand.ExecuteNonQuery();
@@ -223,25 +223,13 @@ namespace Yet_Another_Posting_System
 
             return result + 1;
         }
-
-        /*        public void CreateOrder(string customerID, string sendAddress, string receiveAddress, int contentIndex, int typeIndex, int isExpensive, double weight, string phone, double cost)
-                {
-                    int nextOrderID = NextOrderID();
-                    string insertQuery = $"INSERT INTO Orders (CreationDate, OrderID, CustomerID, SendAddress, ReceiveAddress, ContentIndex, TypeIndex, Expensive, Weight, Phone, Cost) VALUES ({DateTime.Now}, {nextOrderID}, '{customerID}', '{sendAddress}', '{receiveAddress}', {contentIndex}, {typeIndex}, {isExpensive}, {weight}, '{phone}', {cost});";
-                    dtConnection.Open();
-
-                    using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, this.dtConnection))
-                    {
-                        insertCommand.ExecuteNonQuery();
-                    }
-                    dtConnection.Close();
-                }*/
+        
         public void CreateOrder(string customerID, string sendAddress, string receiveAddress, int contentIndex, int typeIndex, int isExpensive, double weight, string phone, double cost)
         {
             int nextOrderID = NextOrderID();
 
-            string insertQuery = "INSERT INTO Orders (CreationDate, OrderID, CustomerID, SendAddress, ReceiveAddress, ContentIndex, TypeIndex, Expensive, Weight, Phone, Cost) " +
-                "VALUES (@CreationDate, @OrderID, @CustomerID, @SendAddress, @ReceiveAddress, @ContentIndex, @TypeIndex, @IsExpensive, @Weight, @Phone, @Cost)";
+            string insertQuery = "INSERT INTO Orders (CreationDate, OrderID, CustomerID, SendAddress, ReceiveAddress, ContentIndex, TypeIndex, Expensive, Weight, Phone, Cost, Status) " +
+                "VALUES (@CreationDate, @OrderID, @CustomerID, @SendAddress, @ReceiveAddress, @ContentIndex, @TypeIndex, @IsExpensive, @Weight, @Phone, @Cost, @Status)";
 
             dtConnection.Open();
 
@@ -258,32 +246,13 @@ namespace Yet_Another_Posting_System
                 insertCommand.Parameters.AddWithValue("@Weight", weight);
                 insertCommand.Parameters.AddWithValue("@Phone", phone);
                 insertCommand.Parameters.AddWithValue("@Cost", cost);
+                insertCommand.Parameters.AddWithValue("@Status", 0);
 
                 insertCommand.ExecuteNonQuery();
             }
 
             dtConnection.Close();
         }
-
-        public void QueryToCSV(string fileName, string query)
-        {
-            this.dtConnection.Open();
-
-            using (SQLiteCommand sqlCommand = new SQLiteCommand(this.dtConnection))
-            {
-                sqlCommand.CommandText = $".output {fileName}";
-                sqlCommand.ExecuteNonQuery();
-
-                sqlCommand.CommandText = query;
-                sqlCommand.ExecuteNonQuery();
-
-                sqlCommand.CommandText = $".output stdout";
-                sqlCommand.ExecuteNonQuery();
-            }
-
-            this.dtConnection.Close();
-        }
-
     }
 
 }
