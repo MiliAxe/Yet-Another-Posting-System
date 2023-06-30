@@ -91,6 +91,10 @@ namespace Yet_Another_Posting_System
             {
                 App.usersDb.CreateOrder(customerIDBox.Text, senderAddressBox.Text, receiverAddressBox.Text, contentBox.SelectedIndex, postTypeBox.SelectedIndex, expensiveCheckBox.IsChecked == true ? 1 : 0, Double.Parse(weightBox.Text), phoneBox.Text, CalculateCost());
             }
+            else
+            {
+                App.usersDb.CreateOrder(customerIDBox.Text, senderAddressBox.Text, receiverAddressBox.Text, contentBox.SelectedIndex, postTypeBox.SelectedIndex, expensiveCheckBox.IsChecked == true ? 1 : 0, Double.Parse(weightBox.Text), phoneBox.Text, CalculateCost());
+            }
         }
     }
 }

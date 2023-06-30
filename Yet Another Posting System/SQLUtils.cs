@@ -30,7 +30,7 @@ namespace Yet_Another_Posting_System
             {
                 createTableCommand.ExecuteNonQuery();
             }
-            createTableQuery = "CREATE TABLE IF NOT EXISTS Orders (OrderID INT, CustomerID TEXT, SendAddress TEXT, ReceiveAddress TEXT, ContentIndex INT, TypeIndex INT, Expensive INT, Weight DOUBLE, Phone TEXT, Cost DOUBLE)";
+            createTableQuery = "CREATE TABLE IF NOT EXISTS Orders (CreationDate DATETIME, OrderID INT, CustomerID TEXT, SendAddress TEXT, ReceiveAddress TEXT, ContentIndex INT, TypeIndex INT, Expensive INT, Weight DOUBLE, Phone TEXT, Cost DOUBLE)";
             using (SQLiteCommand createTableCommand = new SQLiteCommand(createTableQuery, this.dtConnection))
             {
                 createTableCommand.ExecuteNonQuery();
@@ -176,13 +176,15 @@ namespace Yet_Another_Posting_System
         {
             double result;
 
-            string selectQuery = $"SELECT Balance FROM Balances WHERE Username = {username};";
+            string selectQuery = $"SELECT Balance FROM Balances WHERE Username = '{username}';";
+            this.dtConnection.Open();
             using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, this.dtConnection))
             {
                 object selectResult = selectCommand.ExecuteScalar();
                 result = Convert.ToInt16(selectResult);
             }
 
+            this.dtConnection.Close();
             return result;
         }
 
@@ -222,18 +224,66 @@ namespace Yet_Another_Posting_System
             return result + 1;
         }
 
+        /*        public void CreateOrder(string customerID, string sendAddress, string receiveAddress, int contentIndex, int typeIndex, int isExpensive, double weight, string phone, double cost)
+                {
+                    int nextOrderID = NextOrderID();
+                    string insertQuery = $"INSERT INTO Orders (CreationDate, OrderID, CustomerID, SendAddress, ReceiveAddress, ContentIndex, TypeIndex, Expensive, Weight, Phone, Cost) VALUES ({DateTime.Now}, {nextOrderID}, '{customerID}', '{sendAddress}', '{receiveAddress}', {contentIndex}, {typeIndex}, {isExpensive}, {weight}, '{phone}', {cost});";
+                    dtConnection.Open();
+
+                    using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, this.dtConnection))
+                    {
+                        insertCommand.ExecuteNonQuery();
+                    }
+                    dtConnection.Close();
+                }*/
         public void CreateOrder(string customerID, string sendAddress, string receiveAddress, int contentIndex, int typeIndex, int isExpensive, double weight, string phone, double cost)
         {
             int nextOrderID = NextOrderID();
-            string insertQuery = $"INSERT INTO Orders (OrderID, CustomerID, SendAddress, ReceiveAddress, ContentIndex, TypeIndex, Expensive, Weight, Phone, Cost) VALUES ({nextOrderID}, '{customerID}', '{sendAddress}', '{receiveAddress}', {contentIndex}, {typeIndex}, {isExpensive}, {weight}, '{phone}', {cost});";
+
+            string insertQuery = "INSERT INTO Orders (CreationDate, OrderID, CustomerID, SendAddress, ReceiveAddress, ContentIndex, TypeIndex, Expensive, Weight, Phone, Cost) " +
+                "VALUES (@CreationDate, @OrderID, @CustomerID, @SendAddress, @ReceiveAddress, @ContentIndex, @TypeIndex, @IsExpensive, @Weight, @Phone, @Cost)";
+
+            dtConnection.Open();
 
             using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, this.dtConnection))
             {
-                dtConnection.Open();
+                insertCommand.Parameters.AddWithValue("@CreationDate", DateTime.Now);
+                insertCommand.Parameters.AddWithValue("@OrderID", nextOrderID);
+                insertCommand.Parameters.AddWithValue("@CustomerID", customerID);
+                insertCommand.Parameters.AddWithValue("@SendAddress", sendAddress);
+                insertCommand.Parameters.AddWithValue("@ReceiveAddress", receiveAddress);
+                insertCommand.Parameters.AddWithValue("@ContentIndex", contentIndex);
+                insertCommand.Parameters.AddWithValue("@TypeIndex", typeIndex);
+                insertCommand.Parameters.AddWithValue("@IsExpensive", isExpensive);
+                insertCommand.Parameters.AddWithValue("@Weight", weight);
+                insertCommand.Parameters.AddWithValue("@Phone", phone);
+                insertCommand.Parameters.AddWithValue("@Cost", cost);
+
                 insertCommand.ExecuteNonQuery();
             }
+
             dtConnection.Close();
         }
+
+        public void QueryToCSV(string fileName, string query)
+        {
+            this.dtConnection.Open();
+
+            using (SQLiteCommand sqlCommand = new SQLiteCommand(this.dtConnection))
+            {
+                sqlCommand.CommandText = $".output {fileName}";
+                sqlCommand.ExecuteNonQuery();
+
+                sqlCommand.CommandText = query;
+                sqlCommand.ExecuteNonQuery();
+
+                sqlCommand.CommandText = $".output stdout";
+                sqlCommand.ExecuteNonQuery();
+            }
+
+            this.dtConnection.Close();
+        }
+
     }
 
 }
