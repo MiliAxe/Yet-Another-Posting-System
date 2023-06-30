@@ -32,5 +32,11 @@ namespace Yet_Another_Posting_System
             SearchOrder searchOrder = new SearchOrder();
             searchOrder.ShowDialog();
         }
+
+        private void OrderInfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            OrderInfo orderInfo = new OrderInfo();
+            orderInfo.ShowDialog();
+        }
     }
 }
