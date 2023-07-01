@@ -34,7 +34,7 @@ namespace Yet_Another_Posting_System
             return isEmpty;
         }
 
-        public static void EnableAll(Panel panel)
+        public static void ChangeIsEnabled(Panel panel, bool isEnabled)
         {
             for (int i = 0; i < VisualTreeHelper.GetChildrenCount(panel); i++)
             {
@@ -42,12 +42,36 @@ namespace Yet_Another_Posting_System
 
                 if (child is UIElement uiElement)
                 {
-                    uiElement.IsEnabled = true;
+                    uiElement.IsEnabled = isEnabled;
                 }
 
                 if (child is Panel castedPanel)
                 {
-                    EnableAll(castedPanel);
+                    ChangeIsEnabled(castedPanel, isEnabled);
+                }
+
+            }
+        }
+        
+        public static void ClearAll(Panel panel)
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(panel); i++)
+            {
+                var child = VisualTreeHelper.GetChild(panel, i);
+
+                if (child is Label label && label.Name != "")
+                {
+                    label.Content = "";
+                }
+
+                if (child is ComboBox comboBox)
+                {
+                    comboBox.SelectedItem = null;
+                }
+
+                if (child is Panel castedPanel)
+                {
+                    ClearAll(castedPanel);
                 }
 
             }

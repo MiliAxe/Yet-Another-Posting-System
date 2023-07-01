@@ -30,7 +30,7 @@ namespace Yet_Another_Posting_System
             {
                 createTableCommand.ExecuteNonQuery();
             }
-            createTableQuery = "CREATE TABLE IF NOT EXISTS Orders (CreationDate DATETIME, OrderID INT, CustomerID TEXT, SendAddress TEXT, ReceiveAddress TEXT, ContentIndex INT, TypeIndex INT, Expensive INT, Weight DOUBLE, Phone TEXT, Cost DOUBLE, Status INT)";
+            createTableQuery = "CREATE TABLE IF NOT EXISTS Orders (CreationDate DATETIME, OrderID INT, CustomerID TEXT, SendAddress TEXT, ReceiveAddress TEXT, ContentIndex INT, TypeIndex INT, Expensive INT, Weight DOUBLE, Phone TEXT, Cost DOUBLE, Status INT, Feedback TEXT)";
             using (SQLiteCommand createTableCommand = new SQLiteCommand(createTableQuery, this.dtConnection))
             {
                 createTableCommand.ExecuteNonQuery();
@@ -163,13 +163,14 @@ namespace Yet_Another_Posting_System
                 throw new Exception("Such customer doesn't exist");
             }
 
+            this.dtConnection.Open();
             string updateQuery = $"UPDATE Balances SET Balance = {balance} WHERE Username = {username};";
             using (SQLiteCommand insertCommand = new SQLiteCommand(updateQuery, this.dtConnection))
             {
                 insertCommand.ExecuteNonQuery();
             }
 
-            this.dtConnection.Open();
+            this.dtConnection.Close();
         }
 
         public double UserBalance(string username)
@@ -252,6 +253,19 @@ namespace Yet_Another_Posting_System
             }
 
             dtConnection.Close();
+        }
+
+        public void UpdateOrderStatus(int statusIndex, string orderID)
+        {
+
+            string query = $"UPDATE Orders SET Status = {statusIndex} WHERE OrderID = {orderID}";
+
+            this.dtConnection.Open();
+            using (SQLiteCommand updateCommand = new SQLiteCommand(query, App.usersDb.dtConnection))
+            {
+                updateCommand.ExecuteNonQuery();
+            }
+            this.dtConnection.Close();
         }
     }
 

@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:Yet_Another_Posting_System"
         mc:Ignorable="d"
         Title="OrderInfo" Height="450" Width="500">
-    <Grid>
+    <Grid x:Name="mainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.75*"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.75*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -24,38 +24,38 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Order ID" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="55"/>
-        <TextBox Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" Grid.ColumnSpan="2" TextAlignment="Center" Margin="20,0,20,0"/>
-        <Button Grid.Column="3" Content="Search" VerticalAlignment="Center" Margin="38,0,38,0"/>
+        <TextBox x:Name="orderIDBox" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" Grid.ColumnSpan="2" TextAlignment="Center" Margin="20,0,20,0"/>
+        <Button x:Name="searchButton" Grid.Column="3" Content="Search" VerticalAlignment="Center" Margin="38,0,38,0" Click="searchButton_Click"/>
         <Label Content="Customer ID" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center"/>
         <Label Grid.Column="1" Margin="20,0,20,0" Grid.Row="3" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
         <Label Content="Weight" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Grid.Column="2"/>
         <Label Grid.Column="3" Margin="20,0,20,0" Grid.Row="3" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
         <Label Content="Cost" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center"/>
-        <Label Grid.Column="1" Margin="20,0,20,0" Grid.Row="4" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
+        <Label x:Name="costLabel" Grid.Column="1" Margin="20,0,20,0" Grid.Row="4" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
         <Label Content="Phone" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Grid.Column="2"/>
-        <Label Grid.Column="3" Margin="20,0,20,0" Grid.Row="4" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
-        <Label Grid.Column="1" Margin="20,5,20,5" Grid.Row="1" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center" Grid.ColumnSpan="3"/>
-        <Label Grid.Column="1" Margin="20,10,20,10" Grid.Row="2" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center" Grid.ColumnSpan="3" Height="NaN" VerticalAlignment="Center"/>
+        <Label x:Name="phoneLabel" Grid.Column="3" Margin="20,0,20,0" Grid.Row="4" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
+        <Label x:Name="receiveLabel" Grid.Column="1" Margin="20,5,20,5" Grid.Row="1" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center" Grid.ColumnSpan="3"/>
+        <Label x:Name="sendLabel" Grid.Column="1" Margin="20,5,20,5" Grid.Row="2" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center" Grid.ColumnSpan="3" Height="NaN" VerticalAlignment="Center"/>
         <Label Content="Receive Add" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
         <Label Content="Send Add" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center"/>
         <Label Content="Customer ID" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center"/>
-        <Label Grid.Column="1" Margin="20,0,20,0" Grid.Row="3" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
+        <Label x:Name="customerIDLabel" Grid.Column="1" Margin="20,0,20,0" Grid.Row="3" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
         <Label Content="Weight" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Grid.Column="2"/>
-        <Label Grid.Column="3" Margin="20,0,20,0" Grid.Row="3" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
+        <Label x:Name="weightLabel" Grid.Column="3" Margin="20,0,20,0" Grid.Row="3" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
         <Label Content="Content" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center"/>
-        <Label Grid.Column="1" Margin="20,0,20,0" Grid.Row="5" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
+        <Label x:Name="contentLabel" Grid.Column="1" Margin="20,0,20,0" Grid.Row="5" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
         <Label Content="Post Type" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Grid.Column="2"/>
-        <Label Grid.Column="3" Margin="20,0,20,0" Grid.Row="5" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
+        <Label x:Name="typeLabel" Grid.Column="3" Margin="20,0,20,0" Grid.Row="5" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
         <Label Content="Is Expensive" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center"/>
-        <Label Grid.Column="1" Margin="20,0,20,0" Grid.Row="6" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
-        <Label Content="Phone" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Grid.Column="2"/>
-        <Label Grid.Column="3" Margin="20,0,20,0" Grid.Row="6" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
-        <Label Content="Order Status" HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Center" Grid.Column="1" Margin="71,0,0,0"/>
-        <ComboBox Grid.Column="2" Grid.ColumnSpan="2" Margin="18,0,83,0" Grid.Row="7" VerticalAlignment="Center">
+        <Label x:Name="expensiveLabel" Grid.Column="1" Margin="20,0,20,0" Grid.Row="6" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center"/>
+        <Label Content="Order Status" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Top" Grid.Column="2" Margin="0,13,0,0"/>
+        <ComboBox x:Name="statusComboBox" Grid.Column="3" Margin="20,0,20,0" Grid.Row="6" VerticalAlignment="Center" IsEnabled="False" SelectionChanged="statusComboBox_SelectionChanged">
             <ComboBoxItem Content="Submitted"></ComboBoxItem>
             <ComboBoxItem Content="Ready for delivery"></ComboBoxItem>
             <ComboBoxItem Content="Delivery in progress"></ComboBoxItem>
             <ComboBoxItem Content="Delivered"></ComboBoxItem>
         </ComboBox>
+        <Label Content="Feedback" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center"/>
+        <Label x:Name="feedbackLabel" Grid.Column="1" Margin="20,0,20,0" Grid.Row="7" VerticalAlignment="Center" Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="0.5" Content="" HorizontalContentAlignment="Center" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>

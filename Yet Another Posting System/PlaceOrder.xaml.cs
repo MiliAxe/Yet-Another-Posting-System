@@ -19,10 +19,11 @@ namespace Yet_Another_Posting_System
             {
                 CustomerSignup customerSignup = new CustomerSignup();
                 customerSignup.ShowDialog();
+                WPFUtils.ChangeIsEnabled(infoGrid, false);
             }
             else
             {
-                WPFUtils.EnableAll(mainGrid);
+                WPFUtils.ChangeIsEnabled(infoGrid, true);
             }
         }
 

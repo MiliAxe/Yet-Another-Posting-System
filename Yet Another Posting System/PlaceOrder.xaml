@@ -8,37 +8,31 @@
         ResizeMode="NoResize"
         Title="PlaceOrder" Height="250" Width="500">
     <Grid x:Name="mainGrid">
-        <TextBox x:Name="senderAddressBox" HorizontalAlignment="Center" Margin="0,50,0,5" TextWrapping="Wrap" Text="Sender Address" VerticalAlignment="Top" Width="440" TextAlignment="Center" IsEnabled="False" Background="#FFE5E5E5"/>
-        <TextBox x:Name="receiverAddressBox" HorizontalAlignment="Center" Margin="0,73,0,5" TextWrapping="Wrap" Text="Receiver Address" VerticalAlignment="Top" Width="440" TextAlignment="Center" IsEnabled="False" Background="#FFE5E5E5"/>
-        <Grid HorizontalAlignment="Center" Height="26" Margin="0,98,0,0" VerticalAlignment="Top" Width="440">
-            <ComboBox x:Name="contentBox" HorizontalAlignment="Left" Margin="86,0,0,0"  VerticalAlignment="Center" Width="134" IsEnabled="False">
+        <Grid x:Name="infoGrid" HorizontalAlignment="Center" Height="154" Margin="0,50,0,0" VerticalAlignment="Top">
+            <TextBox x:Name="senderAddressBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Sender Address" VerticalAlignment="Top" Width="440" TextAlignment="Center" IsEnabled="False" Background="#FFE5E5E5"/>
+            <TextBox x:Name="receiverAddressBox" HorizontalAlignment="Left" Margin="0,23,0,0" TextWrapping="Wrap" Text="Receiver Address" VerticalAlignment="Top" Width="440" TextAlignment="Center" IsEnabled="False" Background="#FFE5E5E5"/>
+            <ComboBox x:Name="contentBox" HorizontalAlignment="Left" Width="134" IsEnabled="False" VerticalAlignment="Top" Margin="86,50,0,0">
                 <ComboBoxItem Content="Object"/>
                 <ComboBoxItem Content="Documents"/>
                 <ComboBoxItem Content="Breakable"/>
             </ComboBox>
-            <Label Content="Post Content" HorizontalAlignment="Left" VerticalAlignment="Center" IsEnabled="False"/>
-            <Label Content="Post Type" HorizontalAlignment="Left" Margin="225,0,0,0" VerticalAlignment="Center" IsEnabled="False"/>
-            <ComboBox x:Name="postTypeBox" HorizontalAlignment="Left" Margin="293,0,0,0" VerticalAlignment="Center" Width="147" IsEnabled="False">
+            <Label Content="Post Content" HorizontalAlignment="Left" IsEnabled="False" VerticalAlignment="Top" Margin="0,48,0,0"/>
+            <Label Content="Post Type" HorizontalAlignment="Left" IsEnabled="False" VerticalAlignment="Top" Margin="225,48,0,0"/>
+            <ComboBox x:Name="postTypeBox" HorizontalAlignment="Left" Width="147" IsEnabled="False" VerticalAlignment="Top" Margin="293,50,0,0">
                 <ComboBoxItem Content="Normal"/>
                 <ComboBoxItem Content="Prime"/>
             </ComboBox>
-        </Grid>
-        <Grid HorizontalAlignment="Center" Height="18" Margin="0,129,0,0" VerticalAlignment="Top" Width="440">
-            <CheckBox x:Name="expensiveCheckBox" Content="Expensive" HorizontalAlignment="Left" VerticalAlignment="Center" Width="81" IsEnabled="False"/>
-            <TextBox x:Name="weightBox" InputScope="Number" HorizontalAlignment="Left" Margin="86,0,0,0" TextWrapping="Wrap" Text="Weight" VerticalAlignment="Center" Width="120" TextAlignment="Center" IsEnabled="False" Background="#FFE5E5E5"/>
-            <TextBox x:Name="phoneBox" InputScope="Number" HorizontalAlignment="Left" Margin="220,0,0,0" TextWrapping="Wrap" Text="Phone Number" VerticalAlignment="Center" Width="220" TextAlignment="Center" IsEnabled="False" Background="#FFE5E5E5"/>
+            <CheckBox x:Name="expensiveCheckBox" Content="Expensive" HorizontalAlignment="Left" Width="81" IsEnabled="False" VerticalAlignment="Top" Margin="0,80,0,0"/>
+            <TextBox x:Name="weightBox" InputScope="Number" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Weight" Width="120" TextAlignment="Center" IsEnabled="False" Background="#FFE5E5E5" VerticalAlignment="Top" Margin="86,79,0,0"/>
+            <TextBox x:Name="phoneBox" InputScope="Number" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Phone Number" Width="220" TextAlignment="Center" IsEnabled="False" Background="#FFE5E5E5" VerticalAlignment="Top" Margin="220,79,0,0"/>
+            <Label Content="Cost" HorizontalAlignment="Left" IsEnabled="False" VerticalAlignment="Top" Margin="119,103,0,0"/>
+            <TextBlock x:Name="costBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Width="133" Background="#FFF7F7F7" VerticalAlignment="Top" Margin="188,108,0,0"/>
+            <Button x:Name="calculateButton" Content="Calculate Cost" HorizontalAlignment="Left" Width="96" IsEnabled="False" Click="calculateButton_Click" VerticalAlignment="Top" Margin="115,134,0,0"/>
+            <Button x:Name="placeOrderButton" Content="Place Order" HorizontalAlignment="Left" Width="101" IsEnabled="False" Click="placeOrderButton_Click" VerticalAlignment="Top" Margin="224,134,0,0"/>
         </Grid>
         <Grid HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Width="264" Margin="0,16,0,0">
             <TextBox x:Name="customerIDBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Customer ID" VerticalAlignment="Center" Width="202" TextAlignment="Center" Height="20"/>
             <Button x:Name="idSearchButton" Content="Search" HorizontalAlignment="Left" Margin="207,0,0,0" VerticalAlignment="Bottom" Width="57" Click="idSearchButton_Click"/>
-        </Grid>
-        <Grid HorizontalAlignment="Center" Height="26" VerticalAlignment="Top" Width="202" Margin="0,153,0,0">
-            <Label Content="Cost" HorizontalAlignment="Left" VerticalAlignment="Center" IsEnabled="False"/>
-            <TextBlock x:Name="costBlock" HorizontalAlignment="Left" Margin="69,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="133" Background="#FFF7F7F7"/>
-        </Grid>
-        <Grid HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Width="210" Margin="0,184,0,0" IsEnabled="False">
-            <Button x:Name="calculateButton" Content="Calculate Cost" HorizontalAlignment="Left" VerticalAlignment="Center" Width="96" IsEnabled="False" Click="calculateButton_Click"/>
-            <Button x:Name="placeOrderButton" Content="Place Order" HorizontalAlignment="Left" Margin="109,0,0,0" VerticalAlignment="Center" Width="101" IsEnabled="False" Click="placeOrderButton_Click"/>
         </Grid>
     </Grid>
 </Window>
