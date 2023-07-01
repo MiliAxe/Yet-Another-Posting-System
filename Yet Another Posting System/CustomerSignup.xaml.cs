@@ -29,18 +29,7 @@ namespace Yet_Another_Posting_System
 
             Tuple<string, string, string> userPass = App.usersDb.GenerateUser(emailBox.Text, idBox.Text, phoneBox.Text, nameBox.Text, "Customer");
 
-
-            List<string> credentials = new List<string>();
-            using (StreamReader stream = new StreamReader("Credentials.txt"))
-            {
-                string? line;
-                while ((line = stream.ReadLine()) != null)
-                {
-                    credentials.Add(line.Trim());
-                }
-            }
-
-            MailUtils mail = new MailUtils(credentials[0], credentials[1], credentials[2]);
+            MailUtils mail = new MailUtils("Credentials.txt");
 
             mainText.Text = "Sending Email";
             mail.SendMail(userPass.Item3, "Posting system user pass", $"User: {userPass.Item1}\nPass: {userPass.Item2}");

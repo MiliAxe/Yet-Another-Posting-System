@@ -15,10 +15,10 @@
             </Style>
         </StackPanel.Resources>
             <TextBlock TextWrapping="Wrap" Text="Customer Menu" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"/>
-            <Button Content="Search Orders" Click="Button_Click"/>
-            <Button Content="Order Info"/>
-            <Button Content="Balance"/>
-            <Button Content="Change Credentials"/>
+            <Button x:Name="SearchOrdersButton" Content="Search Orders"/>
+            <Button x:Name="OrdersInfoButton" Content="Order Info"/>
+            <Button x:Name="BalanceButton" Content="Balance"/>
+            <Button x:Name="ChangeCredsButton" Content="Change Credentials"/>
         </StackPanel>
 
     </Grid>

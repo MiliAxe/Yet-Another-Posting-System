@@ -189,6 +189,21 @@ namespace Yet_Another_Posting_System
             return result;
         }
 
+        public string GetUserEmail(string userID)
+        {
+            string result;
+
+            string selectQuery = $"SELECT Email FROM Users WHERE ID = '{userID}';";
+            this.dtConnection.Open();
+            using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, this.dtConnection))
+            {
+                result = selectCommand.ExecuteNonQuery(); 
+            }
+
+            this.dtConnection.Close();
+            return result;
+        }
+
         public Tuple<string, string, string> GenerateUser(string email, string id, string phone, string name, string type)
         {
             var random = new Random();

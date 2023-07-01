@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Mail;
 
@@ -14,6 +16,32 @@ namespace Yet_Another_Posting_System
         {
             this.fromAddress = new MailAddress(fromAddress, fromName);
             this.fromPassword = password;
+
+            smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(this.fromAddress.Address, fromPassword)
+            };
+        }
+
+        public MailUtils(string credsFile)
+        {
+            List<string> credentials = new List<string>();
+            using (StreamReader stream = new StreamReader(credsFile))
+            {
+                string? line;
+                while ((line = stream.ReadLine()) != null)
+                {
+                    credentials.Add(line.Trim());
+                }
+            }
+
+            this.fromAddress = new MailAddress(credentials[0], credentials[1]);
+            this.fromPassword = credentials[2];
 
             smtp = new SmtpClient
             {

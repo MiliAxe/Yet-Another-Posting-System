@@ -60,11 +60,19 @@ namespace Yet_Another_Posting_System
 
         private void statusComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+            string? customerID = customerIDLabel.Content.ToString();
+            if (customerID == null)
+            {
+                throw new System.Exception("The customer ID is empty");
+            }
+
             App.usersDb.UpdateOrderStatus(statusComboBox.SelectedIndex, orderIDBox.Text);
 
             if (statusComboBox.SelectedIndex == 3)
             {
                 statusComboBox.IsEnabled = false;
+                MailUtils mail = new MailUtils("Credentials.txt");
+                mail.SendMail(App.usersDb.GetUserEmail(customerID), "Post delivery", $"Your order with the id of {orderIDBox.Text} has been delivered");
             }
         }
     }
