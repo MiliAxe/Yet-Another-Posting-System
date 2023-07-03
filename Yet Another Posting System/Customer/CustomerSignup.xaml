@@ -1,6 +1,7 @@
 ﻿<Window x:Class="Yet_Another_Posting_System.CustomerSignup"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Yet_Another_Posting_System"
@@ -8,22 +9,18 @@
         ResizeMode="NoResize"
         Title="CustomerSignup" Height="340" Width="200">
     <StackPanel x:Name="MainStackPanel" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock x:Name="mainText" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="0,0,0,10">Customer Signup</TextBlock>
+        <TextBlock x:Name="mainText" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="0,0,0,20">Customer Signup</TextBlock>
         <StackPanel Margin="0,0,0,5">
-            <TextBlock>Name</TextBlock>
-            <TextBox x:Name="nameBox" Background="#FFF1F1F1"></TextBox>
+            <TextBox controls:TextBoxHelper.Watermark="Name" x:Name="nameBox" Background="#FFF1F1F1" Margin="0,0,0,10"></TextBox>
         </StackPanel>
         <StackPanel Margin="0,0,0,5">
-            <TextBlock Width="170">ID</TextBlock>
-            <TextBox x:Name="idBox" Background="#FFF1F1F1"/>
+            <TextBox controls:TextBoxHelper.Watermark="ID" x:Name="idBox" Background="#FFF1F1F1" Margin="0,0,0,10"/>
         </StackPanel>
         <StackPanel Margin="0,0,0,4">
-            <TextBlock>Email</TextBlock>
-            <TextBox x:Name="emailBox" Background="#FFF1F1F1"/>
+            <TextBox controls:TextBoxHelper.Watermark="Email" x:Name="emailBox" Background="#FFF1F1F1" Margin="0,0,0,10"/>
         </StackPanel>
         <StackPanel>
-            <TextBlock>Phone</TextBlock>
-            <TextBox x:Name="phoneBox" Background="#FFF1F1F1" Margin="0,0,0,20"/>
+            <TextBox controls:TextBoxHelper.Watermark="Phone" x:Name="phoneBox" Background="#FFF1F1F1" Margin="0,0,0,15"/>
         </StackPanel>
         <Button x:Name="signupButton" HorizontalAlignment="Center" VerticalAlignment="Center" Width="55" Click="signupButton_Click">Signup</Button>
     </StackPanel>

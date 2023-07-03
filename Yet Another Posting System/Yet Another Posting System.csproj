@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="IronPdf" Version="2023.7.4" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.9" />
     <PackageReference Include="MailKit" Version="4.1.0" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.8" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.118" />

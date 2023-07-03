@@ -3,35 +3,34 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:Yet_Another_Posting_System"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="PlaceOrder" Height="250" Width="500">
     <Grid x:Name="mainGrid">
         <Grid x:Name="infoGrid" HorizontalAlignment="Center" Height="154" Margin="0,50,0,0" VerticalAlignment="Top">
-            <TextBox x:Name="senderAddressBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Sender Address" VerticalAlignment="Top" Width="440" TextAlignment="Center" IsEnabled="False" Background="#FFE5E5E5"/>
-            <TextBox x:Name="receiverAddressBox" HorizontalAlignment="Left" Margin="0,23,0,0" TextWrapping="Wrap" Text="Receiver Address" VerticalAlignment="Top" Width="440" TextAlignment="Center" IsEnabled="False" Background="#FFE5E5E5"/>
-            <ComboBox x:Name="contentBox" HorizontalAlignment="Left" Width="134" IsEnabled="False" VerticalAlignment="Top" Margin="86,50,0,0">
+            <TextBox x:Name="senderAddressBox" HorizontalAlignment="Left" TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Sender Address" VerticalAlignment="Top" Width="440" TextAlignment="Center" IsEnabled="False" Background="#FFE5E5E5"/>
+            <TextBox x:Name="receiverAddressBox" HorizontalAlignment="Left" Margin="0,23,0,0" TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Receiver Address" VerticalAlignment="Top" Width="440" TextAlignment="Center" IsEnabled="False" Background="#FFE5E5E5"/>
+            <ComboBox x:Name="contentBox" HorizontalAlignment="Left" Width="220" IsEnabled="False" VerticalAlignment="Top" Margin="0,50,0,0" controls:TextBoxHelper.Watermark="Post Content">
                 <ComboBoxItem Content="Object"/>
                 <ComboBoxItem Content="Documents"/>
                 <ComboBoxItem Content="Breakable"/>
             </ComboBox>
-            <Label Content="Post Content" HorizontalAlignment="Left" IsEnabled="False" VerticalAlignment="Top" Margin="0,48,0,0"/>
-            <Label Content="Post Type" HorizontalAlignment="Left" IsEnabled="False" VerticalAlignment="Top" Margin="225,48,0,0"/>
-            <ComboBox x:Name="postTypeBox" HorizontalAlignment="Left" Width="147" IsEnabled="False" VerticalAlignment="Top" Margin="293,50,0,0">
+            <ComboBox controls:TextBoxHelper.Watermark="Post Type" x:Name="postTypeBox" HorizontalAlignment="Left" Width="215" IsEnabled="False" VerticalAlignment="Top" Margin="225,50,0,0">
                 <ComboBoxItem Content="Normal"/>
                 <ComboBoxItem Content="Prime"/>
             </ComboBox>
             <CheckBox x:Name="expensiveCheckBox" Content="Expensive" HorizontalAlignment="Left" Width="81" IsEnabled="False" VerticalAlignment="Top" Margin="0,80,0,0"/>
-            <TextBox x:Name="weightBox" InputScope="Number" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Weight" Width="120" TextAlignment="Center" IsEnabled="False" Background="#FFE5E5E5" VerticalAlignment="Top" Margin="86,79,0,0"/>
-            <TextBox x:Name="phoneBox" InputScope="Number" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Phone Number" Width="220" TextAlignment="Center" IsEnabled="False" Background="#FFE5E5E5" VerticalAlignment="Top" Margin="220,79,0,0"/>
+            <TextBox x:Name="weightBox" InputScope="Number" HorizontalAlignment="Left" TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Weight" Width="120" TextAlignment="Center" IsEnabled="False" Background="#FFE5E5E5" VerticalAlignment="Top" Margin="86,79,0,0"/>
+            <TextBox x:Name="phoneBox" InputScope="Number" HorizontalAlignment="Left" TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Phone" Width="220" TextAlignment="Center" IsEnabled="False" Background="#FFE5E5E5" VerticalAlignment="Top" Margin="220,79,0,0"/>
             <Label Content="Cost" HorizontalAlignment="Left" IsEnabled="False" VerticalAlignment="Top" Margin="119,103,0,0"/>
             <TextBlock x:Name="costBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Width="133" Background="#FFF7F7F7" VerticalAlignment="Top" Margin="188,108,0,0"/>
             <Button x:Name="calculateButton" Content="Calculate Cost" HorizontalAlignment="Left" Width="96" IsEnabled="False" Click="calculateButton_Click" VerticalAlignment="Top" Margin="115,134,0,0"/>
             <Button x:Name="placeOrderButton" Content="Place Order" HorizontalAlignment="Left" Width="101" IsEnabled="False" Click="placeOrderButton_Click" VerticalAlignment="Top" Margin="224,134,0,0"/>
         </Grid>
         <Grid HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Width="264" Margin="0,16,0,0">
-            <TextBox x:Name="customerIDBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Customer ID" VerticalAlignment="Center" Width="202" TextAlignment="Center" Height="20"/>
+            <TextBox x:Name="customerIDBox" HorizontalAlignment="Left" TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Customer ID"  VerticalAlignment="Center" Width="202" TextAlignment="Center" Height="20"/>
             <Button x:Name="idSearchButton" Content="Search" HorizontalAlignment="Left" Margin="207,0,0,0" VerticalAlignment="Bottom" Width="57" Click="idSearchButton_Click"/>
         </Grid>
     </Grid>

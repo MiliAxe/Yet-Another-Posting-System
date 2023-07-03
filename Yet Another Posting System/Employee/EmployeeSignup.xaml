@@ -2,40 +2,34 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Yet_Another_Posting_System"
         mc:Ignorable="d"
         Title="Signup Window" Height="387" Width="200">
     <Grid>
         <StackPanel x:Name="MainStackPanel" HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
-            <TextBlock x:Name="MainTextbox" TextWrapping="Wrap" Text="Employee Signup" Height="22" Width="96" FontStyle="Italic" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock x:Name="MainTextbox" TextWrapping="Wrap" Text="Employee Signup" Height="22" Width="96" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5"/>
             <StackPanel Orientation="Vertical" Margin="0,0,0,10">
-                <TextBlock TextWrapping="Wrap" Text="Username"/>
-                <TextBox x:Name="usernameBox" TextWrapping="Wrap" Width="120" Background="#FFF1F1F1"/>
+                <TextBox controls:TextBoxHelper.Watermark="Username" x:Name="usernameBox" TextWrapping="Wrap" Width="120" Background="#FFF1F1F1"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="0,0,0,10">
-                <TextBlock TextWrapping="Wrap" Text="Email"/>
-                <TextBox x:Name="emailBox" TextWrapping="Wrap" Width="120" Background="#FFF1F1F1"/>
+                <TextBox controls:TextBoxHelper.Watermark="Email" x:Name="emailBox" TextWrapping="Wrap" Width="120" Background="#FFF1F1F1"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="0,0,0,10">
-                <TextBlock TextWrapping="Wrap" Text="ID"/>
-                <TextBox x:Name="idBox" TextWrapping="Wrap" Width="120" Background="#FFF1F1F1"/>
+                <TextBox controls:TextBoxHelper.Watermark="ID" x:Name="idBox" TextWrapping="Wrap" Width="120" Background="#FFF1F1F1"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="0,0,0,10">
-                <TextBlock TextWrapping="Wrap" Text="Name"/>
-                <TextBox x:Name="nameBox" TextWrapping="Wrap" Width="120" Background="#FFF1F1F1"/>
+                <TextBox controls:TextBoxHelper.Watermark="Name" x:Name="nameBox" TextWrapping="Wrap" Width="120" Background="#FFF1F1F1"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="0,0,0,10">
-                <TextBlock TextWrapping="Wrap" Text="Phone"/>
-                <TextBox x:Name="phoneBox" TextWrapping="Wrap" Width="120" Background="#FFF1F1F1"/>
+                <TextBox controls:TextBoxHelper.Watermark="Phone" x:Name="phoneBox" TextWrapping="Wrap" Width="120" Background="#FFF1F1F1"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
-                <TextBlock TextWrapping="Wrap" Text="Password"/>
-                <PasswordBox x:Name="PasswordBox" Width="120" Background="#FFF1F1F1"/>
+                <PasswordBox controls:TextBoxHelper.Watermark="Password" x:Name="PasswordBox" Width="120" Background="#FFF1F1F1"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
-                <TextBlock TextWrapping="Wrap" Text="Repeat Password"/>
-                <PasswordBox x:Name="RepeatPasswordBox" Width="120" Background="#FFF1F1F1"/>
+                <PasswordBox controls:TextBoxHelper.Watermark="Verify Password" x:Name="RepeatPasswordBox" Width="120" Background="#FFF1F1F1"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,15,0,0" HorizontalAlignment="Center">
                 <Button x:Name="SignupButton" Content="Signup" Padding="10,1,10,1" Click="SignupButton_Click"/>

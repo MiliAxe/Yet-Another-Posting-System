@@ -2,9 +2,10 @@
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
-namespace Yet_Another_Posting_System
+namespace Yet_Another_Posting_System.Utils
 {
     public static class WPFUtils
     {
@@ -52,7 +53,7 @@ namespace Yet_Another_Posting_System
 
             }
         }
-        
+
         public static void ClearAll(Panel panel)
         {
             for (int i = 0; i < VisualTreeHelper.GetChildrenCount(panel); i++)
@@ -135,6 +136,33 @@ namespace Yet_Another_Posting_System
                 throw new Exception("The Customer ID isn't in the correct format");
             }
             textBox.BorderBrush = new SolidColorBrush(Colors.Black);
+        }
+    }
+
+    class PlaceholderBox : TextBox
+    {
+        public string placeholderText { get; set; } = "";
+        public Color placeholderColor { get; set; } = Colors.Gray;
+
+        public PlaceholderBox(string placeholderText)
+        {
+            this.placeholderText = placeholderText;
+        }
+
+        protected override void OnGotKeyboardFocus(KeyboardFocusChangedEventArgs e)
+        {
+            if (Text == placeholderText)
+            {
+                Text = "";
+            }
+        }
+
+        protected override void OnLostKeyboardFocus(KeyboardFocusChangedEventArgs e)
+        {
+            if (Text == "")
+            {
+                Text = placeholderText;
+            }
         }
     }
 }

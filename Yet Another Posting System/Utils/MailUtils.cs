@@ -4,7 +4,7 @@ using System.IO;
 using System.Net;
 using System.Net.Mail;
 
-namespace Yet_Another_Posting_System
+namespace Yet_Another_Posting_System.Utils
 {
     internal class MailUtils
     {
@@ -15,7 +15,7 @@ namespace Yet_Another_Posting_System
         public MailUtils(string fromAddress, string fromName, string password)
         {
             this.fromAddress = new MailAddress(fromAddress, fromName);
-            this.fromPassword = password;
+            fromPassword = password;
 
             smtp = new SmtpClient
             {
@@ -40,8 +40,8 @@ namespace Yet_Another_Posting_System
                 }
             }
 
-            this.fromAddress = new MailAddress(credentials[0], credentials[1]);
-            this.fromPassword = credentials[2];
+            fromAddress = new MailAddress(credentials[0], credentials[1]);
+            fromPassword = credentials[2];
 
             smtp = new SmtpClient
             {
@@ -50,7 +50,7 @@ namespace Yet_Another_Posting_System
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(this.fromAddress.Address, fromPassword)
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
             };
         }
 
