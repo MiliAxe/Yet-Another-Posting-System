@@ -19,9 +19,19 @@ namespace Yet_Another_Posting_System
     /// </summary>
     public partial class CustomerBalance : Window
     {
-        public CustomerBalance()
+        string username { get; set; }
+        public CustomerBalance(string username)
         {
+            this.username = username;
             InitializeComponent();
+            BalanceLabel.Content = App.usersDb.UserBalance(username);
+            usernameBox.Content = username;
+        }
+
+        private void ChargeButton_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerBalanceCharge balanceCharge = new CustomerBalanceCharge(username);
+            balanceCharge.ShowDialog();
         }
     }
 }

@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:Yet_Another_Posting_System"
         mc:Ignorable="d"
-        Title="CustomerBalance" Height="200" Width="300">
+        Title="CustomerBalance" Height="150" Width="300">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -16,11 +17,11 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Button Content="Button" VerticalAlignment="Center" Margin="224,0,0,0" Grid.Column="1"/>
-        <TextBox x:Name="CustomerIDBox" TextWrapping="Wrap" Text="Customer ID" VerticalAlignment="Center" Margin="20,0,20,0"/>
-        <Button x:Name="SearchButton" Grid.Column="2" Content="Search" HorizontalAlignment="Center" VerticalAlignment="Center" Width="65"/>
+        <Label x:Name="usernameBox" BorderThickness="0.5" VerticalAlignment="Center" Margin="20,0,20,0" Height="27" Background="#FFEEEEEE" BorderBrush="Black"/>
         <Label Content="Balance" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Margin="20,0,0,0"/>
-        <Label x:Name="BalanceLabel" Content="" Margin="80,37,20,37" Grid.Row="1" BorderBrush="Black" BorderThickness="0.5" Background="#FFF3F3F3"/>
-        <Button x:Name="ChargeButton" Grid.Column="1" Content="Charge" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="65" IsEnabled="False"/>
+        <Label x:Name="BalanceLabel" Content="" Grid.Row="1" BorderBrush="Black" BorderThickness="0.5" Background="#FFF3F3F3" VerticalAlignment="Center" Margin="87,0,20,0"/>
+        <Button x:Name="ChargeButton" Grid.Column="1" Content="Charge" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="65" Click="ChargeButton_Click"/>
+        <Label Grid.Column="1" Content="Username" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
     </Grid>
 </Window>

@@ -164,7 +164,7 @@ namespace Yet_Another_Posting_System.Utils
             }
 
             dtConnection.Open();
-            string updateQuery = $"UPDATE Balances SET Balance = {balance} WHERE Username = {username};";
+            string updateQuery = $"UPDATE Balances SET Balance = {balance} WHERE Username = '{username}';";
             using (SQLiteCommand insertCommand = new SQLiteCommand(updateQuery, dtConnection))
             {
                 insertCommand.ExecuteNonQuery();

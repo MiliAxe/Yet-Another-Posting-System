@@ -137,32 +137,7 @@ namespace Yet_Another_Posting_System.Utils
             }
             textBox.BorderBrush = new SolidColorBrush(Colors.Black);
         }
-    }
 
-    class PlaceholderBox : TextBox
-    {
-        public string placeholderText { get; set; } = "";
-        public Color placeholderColor { get; set; } = Colors.Gray;
-
-        public PlaceholderBox(string placeholderText)
-        {
-            this.placeholderText = placeholderText;
-        }
-
-        protected override void OnGotKeyboardFocus(KeyboardFocusChangedEventArgs e)
-        {
-            if (Text == placeholderText)
-            {
-                Text = "";
-            }
-        }
-
-        protected override void OnLostKeyboardFocus(KeyboardFocusChangedEventArgs e)
-        {
-            if (Text == "")
-            {
-                Text = placeholderText;
-            }
-        }
+        
     }
 }

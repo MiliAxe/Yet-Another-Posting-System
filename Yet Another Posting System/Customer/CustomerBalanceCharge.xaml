@@ -1,24 +1,33 @@
 ﻿<Window x:Class="Yet_Another_Posting_System.CustomerBalanceCharge"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Yet_Another_Posting_System"
         mc:Ignorable="d"
-        Title="CustomerBalanceCharge" Height="400" Width="400">
-    <Grid>
+        Title="CustomerBalanceCharge" Height="350" Width="400">
+
+    <Grid x:Name="mainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="43*"/>
-            <RowDefinition Height="85*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Customer ID" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Grid.Column="1" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="0.5" Width="231" IsEnabled="False" Grid.ColumnSpan="2" Margin="18,0,0,0"/>
-        <Label Content="" HorizontalAlignment="Left" Margin="99,30,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="67,45,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Username" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,24,0,0"/>
+        <Label x:Name="usernameLabel" Grid.Column="1" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="0.5" Width="231" IsEnabled="False" Grid.ColumnSpan="2" Margin="18,0,0,0"/>
+        <TextBox x:Name="creditNumberBox" Grid.ColumnSpan="2" HorizontalAlignment="Left"  Margin="29,21,0,0" Grid.Row="1" controls:TextBoxHelper.Watermark="Credit Card Number" TextWrapping="Wrap"  VerticalAlignment="Top" Width="216" TextAlignment="Center"/>
+        <TextBox x:Name="cvvBox" HorizontalAlignment="Left" Grid.Row="2" controls:TextBoxHelper.Watermark="CVV2" TextWrapping="Wrap"  VerticalAlignment="Center" Width="94" TextAlignment="Center" Margin="29,0,0,0"/>
+        <TextBox x:Name="yearBox" HorizontalAlignment="Center" Grid.Row="2" controls:TextBoxHelper.Watermark="YY" TextWrapping="Wrap"  VerticalAlignment="Center" Width="94" Grid.Column="1" TextAlignment="Center"/>
+        <TextBox x:Name="monthBox" HorizontalAlignment="Left" Margin="21,0,0,0" Grid.Row="2" controls:TextBoxHelper.Watermark="MM" TextWrapping="Wrap"  VerticalAlignment="Center" Width="94" Grid.Column="2" TextAlignment="Center"/>
+        <Button x:Name="chargeButton" Content="Charge" Margin="106,0,0,0" Grid.Row="3" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="52" Click="chargeButton_Click"/>
+        <Button x:Name="exportButton" Grid.Column="1" Content="Export PDF" HorizontalAlignment="Left" Margin="95,0,0,0" Grid.Row="3" VerticalAlignment="Center" Grid.ColumnSpan="2" IsEnabled="False" Click="exportButton_Click"/>
+        <TextBox x:Name="amountBox" Grid.Column="2" HorizontalAlignment="Left" controls:TextBoxHelper.Watermark="Amount" Margin="21,21,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
     </Grid>
 </Window>

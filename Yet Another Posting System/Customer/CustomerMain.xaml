@@ -17,7 +17,7 @@
             <TextBlock TextWrapping="Wrap" Text="Customer Menu" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"/>
             <Button x:Name="SearchOrdersButton" Content="Search Orders"/>
             <Button x:Name="OrdersInfoButton" Content="Order Info"/>
-            <Button x:Name="BalanceButton" Content="Balance"/>
+            <Button x:Name="BalanceButton" Content="Balance" Click="BalanceButton_Click"/>
             <Button x:Name="ChangeCredsButton" Content="Change Credentials"/>
         </StackPanel>
 

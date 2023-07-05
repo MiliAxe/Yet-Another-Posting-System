@@ -15,9 +15,10 @@ namespace Yet_Another_Posting_System
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BalanceButton_Click(object sender, RoutedEventArgs e)
         {
-
+            CustomerBalance customerBalance = new CustomerBalance(username);
+            customerBalance.ShowDialog();
         }
     }
 }
