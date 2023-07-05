@@ -138,6 +138,34 @@ namespace Yet_Another_Posting_System.Utils
             textBox.BorderBrush = new SolidColorBrush(Colors.Black);
         }
 
+        public static void CheckCVV(TextBox textBox)
+        {
+            if (!Regex.IsMatch(textBox.Text, @"^\d{3,4}$"))
+            {
+                textBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                throw new Exception("The CVV isn't in the correct format");
+            }
+            textBox.BorderBrush = new SolidColorBrush(Colors.Black);
+        }
+
+        public static void CheckMonth(TextBox textBox)
+        {
+            if (!Regex.IsMatch(textBox.Text, @"^\d{2}$"))
+            {
+                textBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                throw new Exception("The Month isn't in the correct format");
+            }
+            textBox.BorderBrush = new SolidColorBrush(Colors.Black);
+        }
         
+        public static void CheckYear(TextBox textBox)
+        {
+            if (!Regex.IsMatch(textBox.Text, @"^\d{2}$"))
+            {
+                textBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                throw new Exception("The Year isn't in the correct format");
+            }
+            textBox.BorderBrush = new SolidColorBrush(Colors.Black);
+        }
     }
 }
