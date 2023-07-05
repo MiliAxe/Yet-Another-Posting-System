@@ -88,7 +88,9 @@ namespace Yet_Another_Posting_System
 
             double currentUserBalance = App.usersDb.UserBalance(this.username);
             App.usersDb.ChangeUserBalance(username, currentUserBalance + int.Parse(amountBox.Text));
-             
+
+            this.creditCardChargeReport = $"{creditNumberBox.Text} {cvvBox.Text} {monthBox.Text} {yearBox.Text}";
+            exportButton.IsEnabled = true;
         }
 
         private void exportPDF(string username, string creditCardInfo, string amount)
