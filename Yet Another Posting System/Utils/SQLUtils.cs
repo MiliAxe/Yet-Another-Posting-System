@@ -198,6 +198,30 @@ namespace Yet_Another_Posting_System.Utils
             using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, dtConnection))
             {
                 result = (string)selectCommand.ExecuteScalar();
+                result = selectCommand.ExecuteNonQuery().ToString(); 
+            }
+
+            this.dtConnection.Close();
+            return result;
+        }
+
+        public string GetCustomerIdFromUsername(string username)
+        {
+            string? result = "";
+
+            string selectQuery = $"SELECT ID FROM Users WHERE Username = '{username}';";
+            this.dtConnection.Open();
+            using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, this.dtConnection))
+            {
+                SQLiteDataReader reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    result = reader.GetValue(0).ToString(); 
+                    if (result == null)
+                    {
+                        throw new Exception("There was a problem in SQL Logic");
+                    }
+                }
             }
 
             dtConnection.Close();
