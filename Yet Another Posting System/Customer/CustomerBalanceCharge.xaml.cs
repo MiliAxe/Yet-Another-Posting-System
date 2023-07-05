@@ -86,11 +86,17 @@ namespace Yet_Another_Posting_System
                 throw new Exception("Credit card is not in the correct format");
             }
 
+            WPFUtils.CheckCVV(cvvBox);
+            WPFUtils.CheckMonth(monthBox);
+            WPFUtils.CheckYear(yearBox);
+
             double currentUserBalance = App.usersDb.UserBalance(this.username);
             App.usersDb.ChangeUserBalance(username, currentUserBalance + int.Parse(amountBox.Text));
 
             this.creditCardChargeReport = $"{creditNumberBox.Text} {cvvBox.Text} {monthBox.Text} {yearBox.Text}";
             exportButton.IsEnabled = true;
+
+            MessageBox.Show("The charge has been successfully done");
         }
 
         private void exportPDF(string username, string creditCardInfo, string amount)
