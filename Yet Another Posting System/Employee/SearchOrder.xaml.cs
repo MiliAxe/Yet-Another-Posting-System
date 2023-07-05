@@ -10,9 +10,14 @@ namespace Yet_Another_Posting_System
     /// </summary>
     public partial class SearchOrder : Window
     {
-        public SearchOrder()
+        public SearchOrder(bool customerIdIsReadOnly=false, string customerIdText="")
         {
             InitializeComponent();
+            if (customerIdIsReadOnly)
+            {
+                customerIDBox.Text = customerIdText;
+                customerIDBox.IsReadOnly = true;
+            }
         }
 
         public static void ExportQueryResultsToCsv(string query, string outputPath)
@@ -95,4 +100,4 @@ namespace Yet_Another_Posting_System
             ExportQueryResultsToCsv(query, "SearchResult.csv");
         }
     }
-}
+ }

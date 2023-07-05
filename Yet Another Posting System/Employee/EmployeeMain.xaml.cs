@@ -7,7 +7,7 @@ namespace Yet_Another_Posting_System
     /// </summary>
     public partial class EmployeeMain : Window
     {
-        public string username;
+        string username;
 
         public EmployeeMain(string username)
         {

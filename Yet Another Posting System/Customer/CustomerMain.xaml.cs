@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Security.Cryptography.X509Certificates;
+using System.Windows;
 
 namespace Yet_Another_Posting_System
 {
@@ -19,6 +20,13 @@ namespace Yet_Another_Posting_System
         {
             CustomerBalance customerBalance = new CustomerBalance(username);
             customerBalance.ShowDialog();
+        }
+
+        private void SearchOrdersButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            SearchOrder searchOrder = new SearchOrder(true,App.usersDb.GetCustomerIdFromUsername(username)); 
+            searchOrder.ShowDialog();
         }
     }
 }
