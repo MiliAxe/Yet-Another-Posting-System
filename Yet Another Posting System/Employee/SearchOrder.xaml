@@ -35,7 +35,7 @@
             </ComboBox>
             <Label Content="Cost" VerticalAlignment="Center" Grid.Row="3" Height="26" HorizontalAlignment="Center" Width="38"/>
             <TextBox x:Name="costBox" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" Margin="10,0,10,0"/>
-            <Button x:Name="searchButton" Content="Search" Margin="204,0,204,0" VerticalAlignment="Center" Click="searchButton_Click" Grid.Row="5" Height="20" Grid.ColumnSpan="2"/>
+            <Button x:Name="searchButton" Content="Search" Margin="196,0,196,0" VerticalAlignment="Center" Click="searchButton_Click" Grid.Row="5" Height="20" Grid.ColumnSpan="2"/>
             <DataGrid x:Name="dtGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,4,0,5" Grid.Row="4" Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
