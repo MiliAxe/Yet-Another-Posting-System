@@ -67,13 +67,18 @@ namespace Yet_Another_Posting_System
                 throw new System.Exception("The customer ID is empty");
             }
 
-            App.usersDb.UpdateOrderStatus(statusComboBox.SelectedIndex, orderIDBox.Text);
 
-            if (statusComboBox.SelectedIndex == 3)
+            if (string.IsNullOrEmpty(customerIDLabel.Content.ToString()) == false)
             {
-                statusComboBox.IsEnabled = false;
-                MailUtils mail = new MailUtils("Credentials.txt");
-                mail.SendMail(App.usersDb.GetUserEmail(customerID), "Post delivery", $"Your order with the id of {orderIDBox.Text} has been delivered");
+
+                App.usersDb.UpdateOrderStatus(statusComboBox.SelectedIndex, orderIDBox.Text);
+
+                if (statusComboBox.SelectedIndex == 3)
+                {
+                    statusComboBox.IsEnabled = false;
+                    MailUtils mail = new MailUtils("Credentials.txt");
+                    mail.SendMail(App.usersDb.GetUserEmail(customerID), "Post delivery", $"Your order with the id of {orderIDBox.Text} has been delivered");
+                }
             }
         }
     }

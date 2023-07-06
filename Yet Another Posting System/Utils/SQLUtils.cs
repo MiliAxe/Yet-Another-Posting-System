@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SQLite;
 
 namespace Yet_Another_Posting_System.Utils
@@ -44,22 +45,31 @@ namespace Yet_Another_Posting_System.Utils
             dtConnection.Open();
 
             string selectQuery = "SELECT * FROM Users";
-            using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, dtConnection))
+            try
             {
-                using (SQLiteDataReader reader = selectCommand.ExecuteReader())
+                using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, dtConnection))
                 {
-                    while (reader.Read())
+                    using (SQLiteDataReader reader = selectCommand.ExecuteReader())
                     {
-                        if (reader["Username"].ToString() == username && reader["Password"].ToString() == password)
+                        while (reader.Read())
                         {
-                            string? result = reader["Type"].ToString();
-                            dtConnection.Close();
-                            return result;
+                            if (reader["Username"].ToString() == username && reader["Password"].ToString() == password)
+                            {
+                                string? result = reader["Type"].ToString();
+                                dtConnection.Close();
+                                return result;
+                            }
                         }
                     }
                 }
             }
-            dtConnection.Close();
+            finally
+            {
+                if (dtConnection.State == ConnectionState.Open)
+                {
+                    dtConnection.Close();
+                }
+            }
             return null;
         }
 
@@ -69,21 +79,31 @@ namespace Yet_Another_Posting_System.Utils
             dtConnection.Open();
 
             string selectQuery = "SELECT * FROM Users";
-            using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, dtConnection))
+
+            try
             {
-                using (SQLiteDataReader reader = selectCommand.ExecuteReader())
+                using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, dtConnection))
                 {
-                    while (reader.Read())
+                    using (SQLiteDataReader reader = selectCommand.ExecuteReader())
                     {
-                        if (reader["Username"].ToString() == username)
+                        while (reader.Read())
                         {
-                            dtConnection.Close();
-                            return true;
+                            if (reader["Username"].ToString() == username)
+                            {
+                                dtConnection.Close();
+                                return true;
+                            }
                         }
                     }
                 }
             }
-            dtConnection.Close();
+            finally
+            {
+                if (dtConnection.State == ConnectionState.Open)
+                {
+                    dtConnection.Close();
+                }
+            }
             return false;
         }
 
@@ -92,12 +112,23 @@ namespace Yet_Another_Posting_System.Utils
             dtConnection.Open();
 
             string updateQuery = $"UPDATE Users SET Username = '{newUsername}', Password = '{newPassword}' WHERE Username = '{oldUsername}';";
-            using (SQLiteCommand updateCommand = new SQLiteCommand(updateQuery, dtConnection))
+            try
             {
-                updateCommand.ExecuteNonQuery();
+                using (SQLiteCommand updateCommand = new SQLiteCommand(updateQuery, dtConnection))
+                {
+                    updateCommand.ExecuteNonQuery();
+                }
+
+            }
+            finally
+            {
+                if (dtConnection.State == ConnectionState.Open)
+                {
+
+                    dtConnection.Close();
+                }
             }
 
-            dtConnection.Close();
 
         }
 
@@ -107,21 +138,32 @@ namespace Yet_Another_Posting_System.Utils
             dtConnection.Open();
 
             string selectQuery = "SELECT * FROM Users";
-            using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, dtConnection))
+
+            try
             {
-                using (SQLiteDataReader reader = selectCommand.ExecuteReader())
+                using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, dtConnection))
                 {
-                    while (reader.Read())
+                    using (SQLiteDataReader reader = selectCommand.ExecuteReader())
                     {
-                        if (reader["Username"].ToString() == username && reader["Type"].ToString() == type)
+                        while (reader.Read())
                         {
-                            dtConnection.Close();
-                            return true;
+                            if (reader["Username"].ToString() == username && reader["Type"].ToString() == type)
+                            {
+                                dtConnection.Close();
+                                return true;
+                            }
                         }
                     }
                 }
             }
-            dtConnection.Close();
+            finally
+            {
+                if (dtConnection.State == ConnectionState.Open)
+                {
+
+                    dtConnection.Close();
+                }
+            }
             return false;
         }
 
@@ -135,19 +177,28 @@ namespace Yet_Another_Posting_System.Utils
             dtConnection.Open();
 
             string insertQuery = "INSERT INTO Users (Username, Password, Email, ID, Phone, Name, Type) VALUES (@Username, @Password, @Email, @ID, @Phone, @Name, @Type);";
-            using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, dtConnection))
+            try
             {
-                insertCommand.Parameters.AddWithValue("@Username", username);
-                insertCommand.Parameters.AddWithValue("@Password", password);
-                insertCommand.Parameters.AddWithValue("@ID", id);
-                insertCommand.Parameters.AddWithValue("@Phone", phone);
-                insertCommand.Parameters.AddWithValue("@Name", name);
-                insertCommand.Parameters.AddWithValue("@Type", type);
-                insertCommand.Parameters.AddWithValue("@Email", email);
-                insertCommand.ExecuteNonQuery();
+                using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, dtConnection))
+                {
+                    insertCommand.Parameters.AddWithValue("@Username", username);
+                    insertCommand.Parameters.AddWithValue("@Password", password);
+                    insertCommand.Parameters.AddWithValue("@ID", id);
+                    insertCommand.Parameters.AddWithValue("@Phone", phone);
+                    insertCommand.Parameters.AddWithValue("@Name", name);
+                    insertCommand.Parameters.AddWithValue("@Type", type);
+                    insertCommand.Parameters.AddWithValue("@Email", email);
+                    insertCommand.ExecuteNonQuery();
+                }
             }
+            finally
+            {
+                if (dtConnection.State == ConnectionState.Open)
+                {
 
-            dtConnection.Close();
+                    dtConnection.Close();
+                }
+            }
         }
 
         public void CreateUserBalance(string username)
@@ -160,14 +211,24 @@ namespace Yet_Another_Posting_System.Utils
             dtConnection.Open();
 
             string insertQuery = "INSERT INTO Balances (Username, Balance) VALUES (@Username, @Balance);";
-            using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, dtConnection))
+            try
             {
-                insertCommand.Parameters.AddWithValue("@Username", username);
-                insertCommand.Parameters.AddWithValue("@Balance", 0);
-                insertCommand.ExecuteNonQuery();
+                using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, dtConnection))
+                {
+                    insertCommand.Parameters.AddWithValue("@Username", username);
+                    insertCommand.Parameters.AddWithValue("@Balance", 0);
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                if (dtConnection.State == ConnectionState.Open)
+                {
+
+                    dtConnection.Close();
+                }
             }
 
-            dtConnection.Close();
         }
 
         public void ChangeUserBalance(string username, double balance)
@@ -179,12 +240,22 @@ namespace Yet_Another_Posting_System.Utils
 
             dtConnection.Open();
             string updateQuery = $"UPDATE Balances SET Balance = {balance} WHERE Username = '{username}';";
-            using (SQLiteCommand insertCommand = new SQLiteCommand(updateQuery, dtConnection))
+            try
             {
-                insertCommand.ExecuteNonQuery();
+                using (SQLiteCommand insertCommand = new SQLiteCommand(updateQuery, dtConnection))
+                {
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                if (dtConnection.State == ConnectionState.Open)
+                {
+
+                    dtConnection.Close();
+                }
             }
 
-            dtConnection.Close();
         }
 
         public double UserBalance(string username)
@@ -193,29 +264,61 @@ namespace Yet_Another_Posting_System.Utils
 
             string selectQuery = $"SELECT Balance FROM Balances WHERE Username = '{username}';";
             dtConnection.Open();
-            using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, dtConnection))
+            try
             {
-                object selectResult = selectCommand.ExecuteScalar();
-                result = Convert.ToInt16(selectResult);
+                using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, dtConnection))
+                {
+                    object selectResult = selectCommand.ExecuteScalar();
+                    result = Convert.ToInt16(selectResult);
+                }
+            }
+            finally
+            {
+                if (dtConnection.State == ConnectionState.Open)
+                {
+
+                    dtConnection.Close();
+                }
             }
 
-            dtConnection.Close();
             return result;
         }
 
         public string GetUserEmail(string userID)
         {
-            string result;
+            string? result;
 
-            string selectQuery = $"SELECT Email FROM Users WHERE ID = '{userID}';";
+            string selectQuery = $"SELECT Email FROM Users WHERE Username = '{userID}';";
             dtConnection.Open();
-            using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, dtConnection))
+            try
             {
-                result = (string)selectCommand.ExecuteScalar();
-                result = selectCommand.ExecuteNonQuery().ToString(); 
+                using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, dtConnection))
+                using (SQLiteDataReader reader = selectCommand.ExecuteReader())
+                {
+
+                    if (reader.Read())
+                    {
+                        result = reader["Email"].ToString();
+                        if (result == null)
+                        {
+                            throw new Exception("There was a problem finding the email of the user");
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("No such user exists");
+                    }
+                }
+            }
+            finally
+            {
+                if (dtConnection.State == ConnectionState.Open)
+                {
+
+                    dtConnection.Close();
+                }
             }
 
-            this.dtConnection.Close();
             return result;
         }
         
@@ -244,20 +347,30 @@ namespace Yet_Another_Posting_System.Utils
 
             string selectQuery = $"SELECT ID FROM Users WHERE Username = '{username}';";
             this.dtConnection.Open();
-            using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, this.dtConnection))
+            try
             {
-                SQLiteDataReader reader = selectCommand.ExecuteReader();
-                while (reader.Read())
+                using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, this.dtConnection))
                 {
-                    result = reader.GetValue(0).ToString(); 
-                    if (result == null)
+                    SQLiteDataReader reader = selectCommand.ExecuteReader();
+                    while (reader.Read())
                     {
-                        throw new Exception("There was a problem in SQL Logic");
+                        result = reader.GetValue(0).ToString();
+                        if (result == null)
+                        {
+                            throw new Exception("There was a problem in SQL Logic");
+                        }
                     }
                 }
             }
+            finally
+            {
+                if (dtConnection.State == ConnectionState.Open)
+                {
 
-            dtConnection.Close();
+                    dtConnection.Close();
+                }
+            }
+
             return result;
         }
 
@@ -286,13 +399,22 @@ namespace Yet_Another_Posting_System.Utils
             dtConnection.Open();
 
             string countQuery = "SELECT COUNT(*) FROM Orders";
-            using (SQLiteCommand countCommand = new SQLiteCommand(countQuery, dtConnection))
+            try
             {
-                object countResult = countCommand.ExecuteScalar();
-                result = Convert.ToInt16(countResult);
+                using (SQLiteCommand countCommand = new SQLiteCommand(countQuery, dtConnection))
+                {
+                    object countResult = countCommand.ExecuteScalar();
+                    result = Convert.ToInt16(countResult);
+                }
             }
+            finally
+            {
+                if (dtConnection.State == ConnectionState.Open)
+                {
 
-            dtConnection.Close();
+                    dtConnection.Close();
+                }
+            }
 
             return result + 1;
         }
@@ -306,26 +428,35 @@ namespace Yet_Another_Posting_System.Utils
 
             dtConnection.Open();
 
-            using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, dtConnection))
+            try
             {
-                insertCommand.Parameters.AddWithValue("@CreationDate", DateTime.Now);
-                insertCommand.Parameters.AddWithValue("@OrderID", nextOrderID);
-                insertCommand.Parameters.AddWithValue("@CustomerID", customerID);
-                insertCommand.Parameters.AddWithValue("@SendAddress", sendAddress);
-                insertCommand.Parameters.AddWithValue("@ReceiveAddress", receiveAddress);
-                insertCommand.Parameters.AddWithValue("@ContentIndex", contentIndex);
-                insertCommand.Parameters.AddWithValue("@TypeIndex", typeIndex);
-                insertCommand.Parameters.AddWithValue("@IsExpensive", isExpensive);
-                insertCommand.Parameters.AddWithValue("@Weight", weight);
-                insertCommand.Parameters.AddWithValue("@Phone", phone);
-                insertCommand.Parameters.AddWithValue("@Cost", cost);
-                insertCommand.Parameters.AddWithValue("@Status", 0);
-                insertCommand.Parameters.AddWithValue("@Feedback", "");
+                using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, dtConnection))
+                {
+                    insertCommand.Parameters.AddWithValue("@CreationDate", DateTime.Now);
+                    insertCommand.Parameters.AddWithValue("@OrderID", nextOrderID);
+                    insertCommand.Parameters.AddWithValue("@CustomerID", customerID);
+                    insertCommand.Parameters.AddWithValue("@SendAddress", sendAddress);
+                    insertCommand.Parameters.AddWithValue("@ReceiveAddress", receiveAddress);
+                    insertCommand.Parameters.AddWithValue("@ContentIndex", contentIndex);
+                    insertCommand.Parameters.AddWithValue("@TypeIndex", typeIndex);
+                    insertCommand.Parameters.AddWithValue("@IsExpensive", isExpensive);
+                    insertCommand.Parameters.AddWithValue("@Weight", weight);
+                    insertCommand.Parameters.AddWithValue("@Phone", phone);
+                    insertCommand.Parameters.AddWithValue("@Cost", cost);
+                    insertCommand.Parameters.AddWithValue("@Status", 0);
+                    insertCommand.Parameters.AddWithValue("@Feedback", "");
 
-                insertCommand.ExecuteNonQuery();
+                    insertCommand.ExecuteNonQuery();
+                }
             }
+            finally
+            {
+                if (dtConnection.State == ConnectionState.Open)
+                {
 
-            dtConnection.Close();
+                    dtConnection.Close();
+                }
+            }
         }
 
         public void UpdateOrderStatus(int statusIndex, string orderID)
@@ -334,11 +465,21 @@ namespace Yet_Another_Posting_System.Utils
             string query = $"UPDATE Orders SET Status = {statusIndex} WHERE OrderID = {orderID}";
 
             dtConnection.Open();
-            using (SQLiteCommand updateCommand = new SQLiteCommand(query, App.usersDb.dtConnection))
+            try
             {
-                updateCommand.ExecuteNonQuery();
+                using (SQLiteCommand updateCommand = new SQLiteCommand(query, App.usersDb.dtConnection))
+                {
+                    updateCommand.ExecuteNonQuery();
+                }
             }
-            dtConnection.Close();
+            finally
+            {
+                if (dtConnection.State == ConnectionState.Open)
+                {
+
+                    dtConnection.Close();
+                }
+            }
         }
     }
 
