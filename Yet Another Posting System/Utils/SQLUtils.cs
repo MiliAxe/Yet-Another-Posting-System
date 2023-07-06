@@ -320,6 +320,7 @@ namespace Yet_Another_Posting_System.Utils
                 insertCommand.Parameters.AddWithValue("@Phone", phone);
                 insertCommand.Parameters.AddWithValue("@Cost", cost);
                 insertCommand.Parameters.AddWithValue("@Status", 0);
+                insertCommand.Parameters.AddWithValue("@Feedback", "");
 
                 insertCommand.ExecuteNonQuery();
             }
