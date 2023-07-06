@@ -87,6 +87,20 @@ namespace Yet_Another_Posting_System.Utils
             return false;
         }
 
+        public void ChangeUserPassword(string oldUsername, string newUsername, string newPassword)
+        {
+            dtConnection.Open();
+
+            string updateQuery = $"UPDATE Users SET Username = '{newUsername}', Password = '{newPassword}' WHERE Username = '{oldUsername}';";
+            using (SQLiteCommand updateCommand = new SQLiteCommand(updateQuery, dtConnection))
+            {
+                updateCommand.ExecuteNonQuery();
+            }
+
+            dtConnection.Close();
+
+        }
+
         public bool TypeUserExists(string username, string type)
         {
 
