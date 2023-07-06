@@ -18,7 +18,7 @@
             <Button x:Name="SearchOrdersButton" Content="Search Orders" Click="SearchOrdersButton_Click"/>
             <Button x:Name="OrdersInfoButton" Content="Order Info"/>
             <Button x:Name="BalanceButton" Content="Balance" Click="BalanceButton_Click"/>
-            <Button x:Name="ChangeCredsButton" Content="Change Credentials"/>
+            <Button x:Name="ChangeCredsButton" Content="Change Credentials" Click="ChangeCredsButton_Click"/>
         </StackPanel>
 
     </Grid>

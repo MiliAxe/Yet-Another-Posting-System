@@ -1,5 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using System.Windows;
+﻿using System.Windows;
+using Yet_Another_Posting_System.Customer;
 
 namespace Yet_Another_Posting_System
 {
@@ -27,6 +27,12 @@ namespace Yet_Another_Posting_System
 
             SearchOrder searchOrder = new SearchOrder(true, App.usersDb.GetCustomerIdFromUsername(username));
             searchOrder.ShowDialog();
+        }
+
+        private void ChangeCredsButton_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerCredentialChange customerCredentialChange = new CustomerCredentialChange(username);
+            customerCredentialChange.ShowDialog();
         }
     }
 }

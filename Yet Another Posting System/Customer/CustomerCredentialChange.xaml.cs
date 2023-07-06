@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Yet_Another_Posting_System.Utils;
 
 namespace Yet_Another_Posting_System.Customer
 {
@@ -19,14 +20,25 @@ namespace Yet_Another_Posting_System.Customer
     /// </summary>
     public partial class CustomerCredentialChange : Window
     {
-        public CustomerCredentialChange()
+        string username { get; set; }
+        public CustomerCredentialChange(string username)
         {
+            this.username = username;
             InitializeComponent();
+            currentUsernameLabel.Content = username;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void chargeButton_Click(object sender, RoutedEventArgs e)
         {
+            WPFUtils.CheckPassword(newPasswordBox);
 
+            if (App.usersDb.UserExists(newUsernameBox.Text) == true)
+            {
+                throw new Exception("Such user already exists");
+            }
+
+            App.usersDb.ChangeUserPassword(username, newUsernameBox.Text, newPasswordBox.Password);
+            MessageBox.Show("Credentials changed successfully");
         }
     }
 }
