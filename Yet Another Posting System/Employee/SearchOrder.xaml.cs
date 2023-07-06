@@ -60,6 +60,7 @@ namespace Yet_Another_Posting_System
                     }
                 }
             }
+            App.usersDb.dtConnection.Close();
         }
 
 
