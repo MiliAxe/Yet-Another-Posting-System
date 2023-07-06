@@ -322,25 +322,7 @@ namespace Yet_Another_Posting_System.Utils
             return result;
         }
         
-        public string GetCustomerIdFromUsername(string username)
-        {
-            string result = "";
-
-            string selectQuery = $"SELECT ID FROM Users WHERE Username = '{username}';";
-            this.dtConnection.Open();
-            using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, this.dtConnection))
-            {
-                SQLiteDataReader reader = selectCommand.ExecuteReader();
-                while (reader.Read())
-                {
-                    result = reader.GetValue(0).ToString(); 
-                }
-            }
-
-            this.dtConnection.Close();
-            return result;
-        }
-
+/*
         public string GetCustomerIdFromUsername(string username)
         {
             string? result = "";
@@ -372,7 +354,7 @@ namespace Yet_Another_Posting_System.Utils
             }
 
             return result;
-        }
+        }*/
 
         public Tuple<string, string, string> GenerateUser(string email, string id, string phone, string name, string type)
         {

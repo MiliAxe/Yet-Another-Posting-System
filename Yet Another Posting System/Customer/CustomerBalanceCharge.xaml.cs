@@ -1,4 +1,6 @@
-﻿using IronPdf;
+﻿using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -101,9 +103,39 @@ namespace Yet_Another_Posting_System
 
         private void exportPDF(string username, string creditCardInfo, string amount)
         {
-            var renderer = new ChromePdfRenderer();
-            PdfDocument pdf = renderer.RenderHtmlAsPdf($"<h1>Balance charge info</h1> balance of {username} has been charged the amount of {amount} with the credit card info of {creditCardInfo}");
-            pdf.SaveAs("ChargeReport.pdf");
+            //var renderer = new ChromePdfRenderer();
+            //PdfDocument pdf = renderer.RenderHtmlAsPdf($"<h1>Balance charge info</h1> balance of {username} has been charged the amount of {amount} with the credit card info of {creditCardInfo}");
+            //pdf.SaveAs("ChargeReport.pdf");
+
+            QuestPDF.Settings.License = LicenseType.Community;
+
+            Document.Create(container =>
+{
+    container.Page(page =>
+    {
+        page.Size(PageSizes.A4);
+        page.Margin(2, Unit.Centimetre);
+        page.PageColor(Colors.White);
+        page.DefaultTextStyle(x => x.FontSize(20));
+
+        page.Header()
+            .Text("Balance Charge")
+            .SemiBold().FontSize(36).FontColor(Colors.Blue.Medium);
+
+        page.Content()
+            .PaddingVertical(1, Unit.Centimetre)
+            .Column(x =>
+            {
+                x.Spacing(20);
+
+                x.Item().Text($"balance of {username} has been charged the amount of {amount} with the credit card info of {creditCardInfo}");
+                x.Item().Image(Placeholders.Image(200, 100));
+            });
+    });
+})
+.GeneratePdf("hello.pdf");
+
+
         }
 
         private void exportButton_Click(object sender, RoutedEventArgs e)
