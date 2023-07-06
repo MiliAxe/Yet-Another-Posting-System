@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
@@ -16,7 +17,7 @@ namespace Yet_Another_Posting_System
             InitializeComponent();
         }
 
-        private void signupButton_Click(object sender, RoutedEventArgs e)
+        private async void signupButton_Click(object sender, RoutedEventArgs e)
         {
             if (WPFUtils.AreTextBoxesEmpty(MainStackPanel) == true)
             {
@@ -35,6 +36,13 @@ namespace Yet_Another_Posting_System
             mainText.Text = "Sending Email";
             mail.SendMail(userPass.Item3, "Posting system user pass", $"User: {userPass.Item1}\nPass: {userPass.Item2}");
             mainText.Text = "Email sent";
+
+            mainText.Text = "User created successfully";
+            mainText.FontSize = 10;
+            mainText.Width = 120;
+            signupButton.IsEnabled = false;
+            await Task.Delay(2000);
+            Close();
         }
     }
 }

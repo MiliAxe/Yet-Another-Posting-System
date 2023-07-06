@@ -3,21 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:Yet_Another_Posting_System"
         mc:Ignorable="d"
         Title="CustomerMain" Height="300" Width="200">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
-        <StackPanel.Resources>
-            <Style TargetType="Button">
-                <Setter Property="Margin" Value="3"></Setter>
-                <Setter Property="Padding" Value="3"></Setter>
-            </Style>
-        </StackPanel.Resources>
-            <TextBlock TextWrapping="Wrap" Text="Customer Menu" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"/>
-            <Button x:Name="SearchOrdersButton" Content="Search Orders" Click="SearchOrdersButton_Click"/>
-            <Button x:Name="OrdersInfoButton" Content="Order Info"/>
-            <Button x:Name="BalanceButton" Content="Balance" Click="BalanceButton_Click"/>
+            <TextBlock TextWrapping="Wrap" Text="Customer Menu" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+            <Button x:Name="SearchOrdersButton" Content="Search Orders" Click="SearchOrdersButton_Click" Margin="0,0,0,10"/>
+            <Button x:Name="OrdersInfoButton" Content="Order Info" Margin="0,0,0,10"/>
+            <Button x:Name="BalanceButton" Content="Balance" Click="BalanceButton_Click" Margin="0,0,0,10"/>
             <Button x:Name="ChangeCredsButton" Content="Change Credentials" Click="ChangeCredsButton_Click"/>
         </StackPanel>
 
