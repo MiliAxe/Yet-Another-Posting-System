@@ -10,10 +10,10 @@ namespace Yet_Another_Posting_System
     /// </summary>
     public partial class SearchOrder : Window
     {
-        public SearchOrder(bool customerIdIsReadOnly=false, string customerIdText="")
+        public SearchOrder(string customerIdText="")
         {
             InitializeComponent();
-            if (customerIdIsReadOnly)
+            if (customerIdText.Length != 0)
             {
                 customerIDBox.Text = customerIdText;
                 customerIDBox.IsReadOnly = true;

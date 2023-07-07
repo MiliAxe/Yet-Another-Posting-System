@@ -10,8 +10,13 @@ namespace Yet_Another_Posting_System
     /// </summary>
     public partial class OrderInfo : Window
     {
-        public OrderInfo()
+        string username;
+        public OrderInfo(string username = "")
         {
+            if (username.Length > 0)
+            {
+                this.username = username;
+            }
             InitializeComponent();
         }
 
@@ -34,7 +39,16 @@ namespace Yet_Another_Posting_System
                     {
                         receiveLabel.Content = reader["ReceiveAddress"].ToString();
                         sendLabel.Content = reader["SendAddress"].ToString();
-                        customerIDLabel.Content = reader["CustomerID"].ToString();
+                        if (this.username.Length > 0)
+                        {
+                            if (reader["CustomerID"].ToString() == username)
+                                customerIDLabel.Content = reader["CustomerID"].ToString();
+                            else
+                                throw new System.Exception("This order is not yours. You can't see its info.");
+                        } else
+                        {
+                            customerIDLabel.Content = reader["CustomerID"].ToString();
+                        }
                         contentLabel.Content = contentList[int.Parse(reader["ContentIndex"]?.ToString() ?? "0")];
                         typeLabel.Content = typeList[int.Parse(reader["TypeIndex"]?.ToString() ?? "0")];
                         phoneLabel.Content = reader["Phone"].ToString();

@@ -25,8 +25,7 @@ namespace Yet_Another_Posting_System
         private void SearchOrdersButton_Click(object sender, RoutedEventArgs e)
         {
 
-            // SearchOrder searchOrder = new SearchOrder(true, App.usersDb.GetCustomerIdFromUsername(username));
-            SearchOrder searchOrder = new SearchOrder(true, username);
+            SearchOrder searchOrder = new SearchOrder(username);
             searchOrder.ShowDialog();
         }
 
