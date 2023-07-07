@@ -39,8 +39,23 @@ namespace Yet_Another_Posting_System
                     {
                         receiveLabel.Content = reader["ReceiveAddress"].ToString();
                         sendLabel.Content = reader["SendAddress"].ToString();
+                        contentLabel.Content = contentList[int.Parse(reader["ContentIndex"]?.ToString() ?? "0")];
+                        typeLabel.Content = typeList[int.Parse(reader["TypeIndex"]?.ToString() ?? "0")];
+                        phoneLabel.Content = reader["Phone"].ToString();
+                        costLabel.Content = reader["Cost"].ToString();
+                        weightLabel.Content = reader["Weight"].ToString();
+                        expensiveLabel.Content = reader["Expensive"].ToString();
+                        statusComboBox.IsEnabled = true;
+                        feedbackTextBox.Text = reader["Feedback"].ToString();
+                        statusIndex = int.Parse(reader["Status"]?.ToString() ?? "0");
                         if (this.username.Length > 0)
                         {
+
+                            if (statusIndex == 3)
+                            {
+                                feedbackTextBox.IsReadOnly = false;
+                                feedbackButton.IsEnabled = true;
+                            }
                             if (reader["CustomerID"].ToString() == username)
                                 customerIDLabel.Content = reader["CustomerID"].ToString();
                             else
@@ -49,14 +64,6 @@ namespace Yet_Another_Posting_System
                         {
                             customerIDLabel.Content = reader["CustomerID"].ToString();
                         }
-                        contentLabel.Content = contentList[int.Parse(reader["ContentIndex"]?.ToString() ?? "0")];
-                        typeLabel.Content = typeList[int.Parse(reader["TypeIndex"]?.ToString() ?? "0")];
-                        phoneLabel.Content = reader["Phone"].ToString();
-                        costLabel.Content = reader["Cost"].ToString();
-                        weightLabel.Content = reader["Weight"].ToString();
-                        expensiveLabel.Content = reader["Expensive"].ToString();
-                        statusComboBox.IsEnabled = true;
-                        statusIndex = int.Parse(reader["Status"]?.ToString() ?? "0");
 
                     }
                 }
