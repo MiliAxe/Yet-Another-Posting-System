@@ -463,6 +463,28 @@ namespace Yet_Another_Posting_System.Utils
                 }
             }
         }
+        public void SetFeedback(string feedback, string orderID)
+        {
+
+            string query = $"UPDATE Orders SET Feedback = '{feedback}' WHERE OrderID = {orderID}";
+
+            dtConnection.Open();
+            try
+            {
+                using (SQLiteCommand updateCommand = new SQLiteCommand(query, App.usersDb.dtConnection))
+                {
+                    updateCommand.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                if (dtConnection.State == ConnectionState.Open)
+                {
+
+                    dtConnection.Close();
+                }
+            }
+        }
     }
 
 }

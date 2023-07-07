@@ -48,13 +48,12 @@ namespace Yet_Another_Posting_System
                         statusComboBox.IsEnabled = true;
                         feedbackTextBox.Text = reader["Feedback"].ToString();
                         statusIndex = int.Parse(reader["Status"]?.ToString() ?? "0");
-                        if (this.username.Length > 0)
+                        if (this.username != null)
                         {
 
                             if (statusIndex == 3)
                             {
                                 feedbackTextBox.IsReadOnly = false;
-                                feedbackButton.IsEnabled = true;
                             }
                             if (reader["CustomerID"].ToString() == username)
                                 customerIDLabel.Content = reader["CustomerID"].ToString();
@@ -101,6 +100,17 @@ namespace Yet_Another_Posting_System
                     mail.SendMail(App.usersDb.GetUserEmail(customerID), "Post delivery", $"Your order with the id of {orderIDBox.Text} has been delivered");
                 }
             }
+        }
+
+        private void feedbackTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            feedbackButton.IsEnabled = feedbackTextBox.Text.Length > 0;
+        }
+
+        private void feedbackButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            App.usersDb.SetFeedback(feedbackTextBox.Text, orderIDBox.Text);
         }
     }
 
