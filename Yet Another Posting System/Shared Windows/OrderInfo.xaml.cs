@@ -16,7 +16,7 @@ namespace Yet_Another_Posting_System
             if (username.Length > 0)
             {
                 this.username = username;
-            }
+            } 
             InitializeComponent();
         }
 
@@ -53,6 +53,7 @@ namespace Yet_Another_Posting_System
                         } else
                         {
                             customerIDLabel.Content = reader["CustomerID"].ToString();
+                            statusComboBox.IsEnabled = true;
                         }
                         customerIDLabel.Content = reader["CustomerID"].ToString();
                         receiveLabel.Content = reader["ReceiveAddress"].ToString();
@@ -63,7 +64,6 @@ namespace Yet_Another_Posting_System
                         costLabel.Content = reader["Cost"].ToString();
                         weightLabel.Content = reader["Weight"].ToString();
                         expensiveLabel.Content = reader["Expensive"].ToString();
-                        statusComboBox.IsEnabled = true;
                         feedbackTextBox.Text = reader["Feedback"].ToString();
 
                     }
@@ -71,9 +71,9 @@ namespace Yet_Another_Posting_System
             }
             App.usersDb.dtConnection.Close();
 
+            statusComboBox.SelectionChanged -= statusComboBox_SelectionChanged;
             statusComboBox.SelectedIndex = statusIndex;
-
-
+            statusComboBox.SelectionChanged += statusComboBox_SelectionChanged;
         }
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
