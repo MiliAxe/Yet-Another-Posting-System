@@ -53,7 +53,9 @@ namespace Yet_Another_Posting_System
                         } else
                         {
                             customerIDLabel.Content = reader["CustomerID"].ToString();
-                            statusComboBox.IsEnabled = true;
+                            
+                            if (statusComboBox.SelectedIndex != 3)
+                                statusComboBox.IsEnabled = true;
                         }
                         customerIDLabel.Content = reader["CustomerID"].ToString();
                         receiveLabel.Content = reader["ReceiveAddress"].ToString();
