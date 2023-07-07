@@ -269,7 +269,7 @@ namespace Yet_Another_Posting_System.Utils
                 using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, dtConnection))
                 {
                     object selectResult = selectCommand.ExecuteScalar();
-                    result = Convert.ToInt16(selectResult);
+                    result = Convert.ToDouble(selectResult);
                 }
             }
             finally

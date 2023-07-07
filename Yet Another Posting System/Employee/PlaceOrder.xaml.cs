@@ -21,6 +21,8 @@ namespace Yet_Another_Posting_System
                 CustomerSignup customerSignup = new CustomerSignup();
                 customerSignup.ShowDialog();
                 WPFUtils.ChangeIsEnabled(mainGrid, false);
+                idSearchButton.IsEnabled = true;
+                customerIDBox.IsEnabled = true;
             }
             else
             {
