@@ -37,6 +37,24 @@ namespace Yet_Another_Posting_System
                 {
                     while (reader.Read())
                     {
+                        statusIndex = int.Parse(reader["Status"]?.ToString() ?? "0");
+                        if (this.username != null)
+                        {
+
+                            if (reader["CustomerID"].ToString() != username)
+                            {
+                                App.usersDb.dtConnection.Close();
+                                throw new System.Exception("This order is not yours. You can't see its info.");
+                            }
+                            if (statusIndex == 3)
+                            {
+                                feedbackTextBox.IsReadOnly = false;
+                            }
+                        } else
+                        {
+                            customerIDLabel.Content = reader["CustomerID"].ToString();
+                        }
+                        customerIDLabel.Content = reader["CustomerID"].ToString();
                         receiveLabel.Content = reader["ReceiveAddress"].ToString();
                         sendLabel.Content = reader["SendAddress"].ToString();
                         contentLabel.Content = contentList[int.Parse(reader["ContentIndex"]?.ToString() ?? "0")];
@@ -47,22 +65,6 @@ namespace Yet_Another_Posting_System
                         expensiveLabel.Content = reader["Expensive"].ToString();
                         statusComboBox.IsEnabled = true;
                         feedbackTextBox.Text = reader["Feedback"].ToString();
-                        statusIndex = int.Parse(reader["Status"]?.ToString() ?? "0");
-                        if (this.username != null)
-                        {
-
-                            if (statusIndex == 3)
-                            {
-                                feedbackTextBox.IsReadOnly = false;
-                            }
-                            if (reader["CustomerID"].ToString() == username)
-                                customerIDLabel.Content = reader["CustomerID"].ToString();
-                            else
-                                throw new System.Exception("This order is not yours. You can't see its info.");
-                        } else
-                        {
-                            customerIDLabel.Content = reader["CustomerID"].ToString();
-                        }
 
                     }
                 }
