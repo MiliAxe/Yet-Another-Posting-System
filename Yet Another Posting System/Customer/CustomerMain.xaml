@@ -11,7 +11,7 @@
         <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
             <TextBlock TextWrapping="Wrap" Text="Customer Menu" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
             <Button x:Name="SearchOrdersButton" Content="Search Orders" Click="SearchOrdersButton_Click" Margin="0,0,0,10"/>
-            <Button x:Name="OrdersInfoButton" Content="Order Info" Margin="0,0,0,10"/>
+            <Button x:Name="OrdersInfoButton" Content="Order Info" Margin="0,0,0,10" Click="OrdersInfoButton_Click"/>
             <Button x:Name="BalanceButton" Content="Balance" Click="BalanceButton_Click" Margin="0,0,0,10"/>
             <Button x:Name="ChangeCredsButton" Content="Change Credentials" Click="ChangeCredsButton_Click"/>
         </StackPanel>

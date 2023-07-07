@@ -34,5 +34,11 @@ namespace Yet_Another_Posting_System
             CustomerCredentialChange customerCredentialChange = new CustomerCredentialChange(username);
             customerCredentialChange.ShowDialog();
         }
+
+        private void OrdersInfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            OrderInfo orderInfo = new OrderInfo(username);
+            orderInfo.ShowDialog();
+        }
     }
 }
